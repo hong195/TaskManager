@@ -1,0 +1,49 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.sectionlistItems {
+}
+
+.staticList {
+  border: 1px solid #c4c4c4;
+  margin: 15px;
+  border-radius: 5px;
+  max-width: 320px;
+  background-color: #67b437;
+  padding-left: 5px;
+  font-size: 1.8em;
+  min-width: 100%;
+}
+
+.staticList a, .backBtn {
+  color: white;
+}
+
+.backBtn {
+  color: #67b437;
+}
+
+.allBox {
+  height: 100%;
+  /*background: #f9f8a8;*/
+}
+
+.unitName {
+  color: #1d643b;
+}
+
+.termContent {
+  display: flex;
+  flex-direction: row;
+}
+.imageclass{
+  float: left;
+  max-width: 220px;
+  margin: 5px;
+}
