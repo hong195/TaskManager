@@ -84,15 +84,18 @@ class TermController extends Controller
 
         $term->text = $request->text;
         $term->save();
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Term $term
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Term $term)
     {
         //
     }
