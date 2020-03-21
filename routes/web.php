@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/user', 'UserController');
 Route::resource('/units', 'UnitController');
 Route::resource('/cell', 'CellController');
+Route::resource('/term', 'TermController');
 Route::get('/unit/{unit}/systems', 'RelationController@unitRelation');
 Route::get('/department/{department}/blocks', 'RelationController@depRelation');
 Route::get('/block/{block}/cells', 'RelationController@blockRelation');

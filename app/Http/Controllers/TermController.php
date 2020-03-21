@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\File;
-use App\Section;
 use App\Term;
-use App\Unit;
 use Illuminate\Http\Request;
 
-class UnitController extends Controller
+class TermController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::all();
-        return view('units', ['units' => $units]);
+        //
     }
 
     /**
@@ -34,7 +30,7 @@ class UnitController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,49 +41,59 @@ class UnitController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Unit $unit)
+    public function show($id)
     {
-        return view('units.unit', [
-            'unit' => $unit,
-            'sections' => $unit->sections,
-            'terms' => Term::query()->where('bu_id', $unit->id)->get(),
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Unit $unit)
+    public function edit($id)
     {
-        //
+        $term = Term::where('id', $id)->firstOrFail();
+        return view('terms.edit', compact('term'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Term $term
+     * @return void
      */
-    public function update(Request $request, Unit $unit)
+    public function update(Request $request, Term $term)
     {
-        //
+        $request->validate([
+            'text' => 'required',
+        ]);
+
+        if ($request->hasFile('term_image')) {
+            $file = $request->file('term_image');
+            $fileName =  $file->getFilename().'.' .$file->getClientOriginalExtension();
+            $file->storeAs('public/terms_img',  $fileName);
+            $term->file->source = '/terms_img/' . $fileName;
+            $term->file->save();
+        }
+
+        $term->text = $request->text;
+        $term->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unit $unit)
+    public function destroy($id)
     {
-        $unit->delete();
+        //
     }
 }

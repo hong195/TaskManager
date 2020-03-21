@@ -41,12 +41,15 @@
     }
 </style>
 <div class="allBox container-fluid">
-    <span class="unitName"><h2>{{$unit->name}}</h2></span>
+    <img class="img-responsive" width="100px" height="100px" src="{{$unit->logo->source}}" alt="">
     <div class="row">
         <div class="sectionlistItems col-4">
             @foreach($sections as $oneSection)
                 <div class="staticList">
-                    <a style="text-decoration:none" onclick="getFile({{$oneSection->id}}, {{$unit->id}})" href="#"><i class="{{$oneSection->icon_code}}"></i> {{$oneSection->name}}</a>
+                    <a style="text-decoration:none" onclick="getFile({{$oneSection->id}}, {{$unit->id}})" href="#">
+                        <i class="{{$oneSection->icon_code}}"></i>
+                        {{ $oneSection->name }}
+                    </a>
                 </div>
             @endforeach
         </div>
@@ -56,8 +59,11 @@
                     <div class="termContent">
                         <div class="termTextContainer">
                             <h3>{{$oneTerm->type}}</h3>
-                            <img class="imageclass" width="100%" src="/terms_img/mission.png" alt="">
-                            {{$oneTerm->text}}
+                            <img class="imageclass" width="100%" src="{{ asset('storage/' . $oneTerm->file->source) }}">
+                            <a href="{{ route('term.edit', [$oneTerm->id] ) }}">Редактировать</a>
+                            <p>
+                                {{$oneTerm->text}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -66,8 +72,10 @@
         </div>
     </div>
     <div class="exitDiv">
-        <a style="text-decoration:none" class="backBtn" href="/units"><h5><i class="fas fa-undo-alt"></i> Назад к выбору
-                BU</h5></a>
+        <a style="text-decoration:none"
+           class="backBtn" href="/units">
+            <h5><i class="fas fa-undo-alt"></i> Назад к выбору BU</h5>
+        </a>
     </div>
 </div>
 
