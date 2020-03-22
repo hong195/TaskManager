@@ -16,13 +16,14 @@ Auth::routes();
 Route::get('/', 'UnitController@index')->name('home');
 
 Route::resource('/user', 'UserController');
+Route::resource('/file', 'FileController');
 Route::resource('/units', 'UnitController');
 Route::resource('/cell', 'CellController');
 Route::resource('/term', 'TermController');
-Route::get('/unit/{unit}/systems', 'RelationController@unitRelation');
+Route::get('/unit/{unit}/systems', 'RelationController@unitRelation')->name('unit.systems');
 Route::get('/department/{department}/blocks', 'RelationController@depRelation');
-Route::get('/block/{block}/cells', 'RelationController@blockRelation');
-Route::get('/cell/{cell}/steps', 'RelationController@CellRelation');
+Route::get('/block/{block}/cells', 'RelationController@blockRelation')->name('blocks');
+Route::get('/cell/{cell}/steps', 'RelationController@CellRelation')->name('cells');
 Route::post('/ajaxblocks', 'RelationController@ajaxblocks');
 Route::post('/getDataBySection', 'RelationController@getDataBySection');
 Route::post('/ajaxphotobooth', 'RelationController@ajaxphotobooth');

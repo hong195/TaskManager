@@ -1,4 +1,21 @@
-<meta name="viewport" content="width=device-width, initial-scale=0.5">
+@extends('layouts.default')
+@section('content')
+
+    <div class="container-fluid wrapBox">
+        <div class="row unitBox">
+            @foreach($units as $oneUnit)
+                <div class="col-4">
+                    <div class="oneunitBox">
+                        <a href="/units/{{$oneUnit->id}}">
+                            <img class="img-responsive" width="200px"
+                                 src="{{ asset('storage') . $oneUnit->logo->source }}">
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
 <style>
     .oneunitBox{
         text-align: center;
@@ -10,19 +27,5 @@
         justify-content: center;
     }
 </style>
-<div class="container-fluid wrapBox">
-    <div class="row unitBox">
-        @foreach($units as $oneUnit)
-            <div class="col-4">
-                <div class="oneunitBox">
-                    <a href="/units/{{$oneUnit->id}}">
-                        <img class="img-responsive" width="200px" src="{{$oneUnit->logo->source}}" alt="">
-                    </a>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</div>
-
 
 

@@ -12,7 +12,7 @@ class CreateBlocksTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('section_id');
             $table->string('name');
-            $table->foreign('section_id')->references('id')->on('sections');
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->timestamps();
         });
     }

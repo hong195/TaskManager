@@ -1,3 +1,8 @@
-@foreach($cells as $oneCell)
-    <a href="/cell/{{$oneCell->id}}/steps"><h4>{{$oneCell->name}}</h4></a>
-@endforeach
+@extends('layouts.default')
+
+@section('content')
+    @foreach($cells as $oneCell)
+        <a href="{{ route('cells', $oneCell->id) }}"><h4>{{$oneCell->name}}</h4></a>
+    @endforeach
+@endsection
+

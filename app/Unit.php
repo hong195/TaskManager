@@ -19,4 +19,9 @@ class Unit extends Model
     {
         return $this->belongsToMany('\App\Section', 'unit_section');
     }
+
+    public function departments()
+    {
+        return $this->hasMany('\App\Department', 'bu_id');
+    }
 }

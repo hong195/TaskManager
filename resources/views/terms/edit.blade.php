@@ -1,3 +1,5 @@
+@extends('layouts.default')
+@section('content')
 <form method="POST" action="{{ route('term.update', [$term->id]) }}" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
@@ -16,3 +18,5 @@
         <input type="submit" value="Сохранить">
     </div>
 </form>
+@endsection
+

@@ -10,11 +10,13 @@ class TermController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $terms = Term::where('bu_id', $request->unitId)->get();
+        return view('terms.index', compact('terms'));
     }
 
     /**
@@ -77,15 +79,15 @@ class TermController extends Controller
         if ($request->hasFile('term_image')) {
             $file = $request->file('term_image');
             $fileName =  $file->getFilename().'.' .$file->getClientOriginalExtension();
-            $file->storeAs('public/terms_img',  $fileName);
-            $term->file->source = '/terms_img/' . $fileName;
+            $file->storeAs('/public/terms_img',  $fileName);
+            $term->file->source = 'terms_img/' . $fileName;
             $term->file->save();
         }
 
         $term->text = $request->text;
         $term->save();
 
-        return redirect()->back();
+        return redirect(route('units.show', $term->bu_id));
     }
 
     /**

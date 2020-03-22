@@ -26,7 +26,18 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+$(document).ready(function(){
+    $('.staticList').not('.system').click(function(event) {
+        event.preventDefault();
+        $('.staticList').removeClass('active')
+        $(this).addClass('active');
+    });
+    $('.departments .staticList').click(function() {
+        const department_id = $(this).data('department-id');
+        $('.blocks').addClass('d-none').removeClass('d-flex');
+        $('.blocks[data-department-id="' + department_id + '"]').removeClass('d-none').addClass('d-flex')
+    })
+})
 const app = new Vue({
     el: '#app',
 });

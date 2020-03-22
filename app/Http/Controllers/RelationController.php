@@ -13,21 +13,26 @@ class RelationController extends Controller
 
     public function unitRelation(Unit $unit)
     {
-//        return view('relation.unit_department', ['departments' => $unit->departments]);
+        return view('relation.unit_department', ['unit' => $unit ?? [] ]);
     }
 
     public function ajaxblocks(Request $request)
     {
-//        return view('ajax', ['blocks' => Block::where('dep_id', $request->id)->get()]);
+        return view('ajax', ['blocks' => Block::where('dep_id', $request->id)->get()]);
     }
 
     public function getDataBySection(Request $request)
     {
-        $result = File::query()
-            ->where('section_id', $request->sectionId)
+        $file = File::where('section_id', $request->sectionId)
             ->where('bu_id', $request->unitId)
             ->first();
-        return view('ajax.photobooth', ['file' => $result]);
+
+        //dd($request->all());
+        return view('ajax.photobooth', [
+            'file' => $file,
+            'section_id' => $request->sectionId,
+            'unit_id' => $request->unitId
+        ]);
     }
 
     public function ajaxphotobooth()

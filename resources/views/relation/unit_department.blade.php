@@ -1,58 +1,49 @@
-<style>
-    .linkDepartments {
-        border: 1px solid #c4c4c4;
-        margin: 15px 0 15px 0;
-        border-radius: 5px;
-        max-width: 320px;
-        background-color: #67b437;
-        padding-left: 5px;
-        font-size: 1.8em;
-        max-width: 98%;
-    }
+@extends('layouts.default')
 
-    .linkDepartments a {
-        color: white;
-    }
-
-    .secondBlock {
-        border: 2px solid red;
-    }
-
-    .depPanel {
-        margin: auto;
-        /*margin-right: 10px;*/
-    }
-</style>
-<div class="container">
-    <div class="row">
-        <div class="col-4 depPanel">
-            @foreach($departments as $one)
-                <div class="linkDepartments">
-                    <a style="text-decoration: none" href="#" onclick="getBlock({{$one->id}})"><i
-                            class="fab fa-steam-square"></i> {{($one->name)}}</a> <br>
-                </div>
-            @endforeach
+@section('content')
+    <div class="container-fluid departments">
+        <div class="unit__logo">
+            <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
         </div>
-        <div class=" secondBlock col-8">
-            foo
+        <div class="row" >
+            <div class="col-4  sectionlistItems">
+                @forelse($unit->departments as $one)
+                    <div class="staticList" data-department-id="{{ $one->id}}">
+                        <a href="#"> {{($one->name)}}</a>
+                    </div>
+                @empty
+                    <div class="content">
+                        <p>No Blocks</p>
+                    </div>
+                @endforelse
+                <div class="exitDiv">
+                    <a class="backBtn" href="{{ route('units.show', $unit->id) }}">
+                        <h5><i class="fas fa-undo-alt"></i>Назад</h5>
+                    </a>
+                </div>
+            </div>
+            <div class="col-8 ">
+                    <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
+                        @forelse($unit->departments as $k => $one)
+                            <div class="{{ $k ===0 ? 'd-flex' : 'd-none' }} blocks flex-wrap justify-content-between"
+                                 data-department-id="{{ $one->id }}"
+                            >
+                                @foreach($one->blocks as $block)
+                                    <div class="single-block d-flex align-items-center">
+                                        <a href="{{ route('blocks', $block->id ) }}">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <span>{{ $block->name }}</span>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @empty
+                            <div class="content">
+                                <p>No Blocks</p>
+                            </div>
+                        @endforelse
+                    </div>
+            </div>
         </div>
     </div>
-
-    <script>
-        function getBlock(dep_id) {
-            $.ajax({
-                type: 'POST',
-                url: '/ajaxblocks',
-                data:
-                    {
-                        'id': dep_id
-                    },
-                success: function (data) {
-                    event.preventDefault();
-                    console.log($('.secondBlock'));
-                    $('.secondBlock').html(data);
-                }
-            });
-        }
-    </script>
-</div>
+@endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\File;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -36,12 +37,35 @@ class FileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+          'section_id' => 'required',
+          'unit_id' => 'required'
+        ]);
+
+        $file = $request->file('section_img');
+
+        if ($file) {
+            $fileName =  $file->getFilename().'.' .$file->getClientOriginalExtension();
+            $file->storeAs('public/sections',  $fileName);
+
+            $attachment = new File();
+            $attachment->section_id = $request->section_id;
+            $attachment->bu_id = $request->unit_id;
+            $attachment->name = $file->getFilename();
+            $attachment->source = '/sections/' . $fileName;
+            $attachment->extension = $file->getClientOriginalExtension();
+            $attachment->size = $file->getSize();
+
+            $attachment->save();
+        }
+
+        return redirect(route('units.show', $request->unit_id));
     }
 
     /**
@@ -69,13 +93,18 @@ class FileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->file('section_img')) {
+            $this->destroy($id);
+            $this->store($request);
+        }
+        return redirect(route('units.show', $request->unit_id));
     }
 
     /**
@@ -86,6 +115,8 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file = File::where('id', $id);
+        unlink($file->source);
+        $file->delete();
     }
 }

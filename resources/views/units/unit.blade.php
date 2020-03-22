@@ -1,103 +1,89 @@
-<style>
-    .sectionlistItems {
-    }
-
-    .staticList {
-        border: 1px solid #c4c4c4;
-        margin: 15px;
-        border-radius: 5px;
-        max-width: 320px;
-        background-color: #67b437;
-        padding-left: 5px;
-        font-size: 1.8em;
-        min-width: 100%;
-    }
-
-    .staticList a, .backBtn {
-        color: white;
-    }
-
-    .backBtn {
-        color: #67b437;
-    }
-
-    .allBox {
-        height: 100%;
-        /*background: #f9f8a8;*/
-    }
-
-    .unitName {
-        color: #1d643b;
-    }
-
-    .termContent {
-        display: flex;
-        flex-direction: row;
-    }
-    .imageclass{
-        float: left;
-        max-width: 220px;
-        margin: 5px;
-    }
-</style>
-<div class="allBox container-fluid">
-    <img class="img-responsive" width="100px" height="100px" src="{{$unit->logo->source}}" alt="">
-    <div class="row">
-        <div class="sectionlistItems col-4">
-            @foreach($sections as $oneSection)
-                <div class="staticList">
-                    <a style="text-decoration:none" onclick="getFile({{$oneSection->id}}, {{$unit->id}})" href="#">
-                        <i class="{{$oneSection->icon_code}}"></i>
-                        {{ $oneSection->name }}
+@extends('layouts.default')
+@section('content')
+    <div class="allBox container-fluid">
+        <div class="unit__logo">
+            <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
+        </div>
+        <div class="row wrapper">
+            <div class="sectionlistItems col-4">
+                @foreach($sections as $section)
+                    <div class="staticList
+                    <?php echo $section->type === 'term' ? 'active' : '';
+                          echo $section->type === 'system' ? 'system' : ''
+                    ?>
+                    ">
+                        @if ($section->type === 'system')
+                            <a  href="{{ route('unit.systems', $unit->id) }}"
+                                style="text-decoration:none"
+                                id="system"
+                            >
+                                <i class="{{$section->icon_code}}"></i>
+                                {{ $section->name }}
+                            </a>
+                        @elseif($section->type === 'term')
+                            <a class="link active item" onclick="getTerm({{$section->id}}, {{$unit->id}})" href="#">
+                                <i class="{{$section->icon_code}}"></i>
+                                {{ $section->name }}
+                            </a>
+                        @else
+                            <a class="link" onclick="getFile({{$section->id}}, {{$unit->id}})" href="#">
+                                <i class="{{$section->icon_code}}"></i>
+                                {{ $section->name }}
+                            </a>
+                        @endif
+                    </div>
+                @endforeach
+                <div class="exitDiv">
+                    <a class="backBtn" href="/units">
+                        <h5><i class="fas fa-undo-alt"></i> Назад к выбору BU</h5>
                     </a>
                 </div>
-            @endforeach
-        </div>
-        <div class="col-8 secondBlock">
-            @foreach($terms as $oneTerm)
-                <div class="termBlock">
-                    <div class="termContent">
-                        <div class="termTextContainer">
-                            <h3>{{$oneTerm->type}}</h3>
-                            <img class="imageclass" width="100%" src="{{ asset('storage/' . $oneTerm->file->source) }}">
-                            <a href="{{ route('term.edit', [$oneTerm->id] ) }}">Редактировать</a>
-                            <p>
-                                {{$oneTerm->text}}
-                            </p>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-8 d-flex align-items-center justify-content-center">
+                <div class="secondBlock wrapper">
+                    @include('terms.index')
                 </div>
-                <hr>
-            @endforeach
+            </div>
         </div>
     </div>
-    <div class="exitDiv">
-        <a style="text-decoration:none"
-           class="backBtn" href="/units">
-            <h5><i class="fas fa-undo-alt"></i> Назад к выбору BU</h5>
-        </a>
-    </div>
-</div>
-
+@endsection
 <script>
-function getFile(sectionId, unitId){
+  function getFile(sectionId, unitId){
     $.ajax({
-        type: 'POST',
-        url: '/getDataBySection',
-        data:
-            {
-                'sectionId': sectionId,
-                'unitId': unitId,
-            },
-        success: function (data) {
-            $('.secondBlock').html(data);
-        },
-        error: (error) => {
-          console.log(error)
-        }
+      type: 'POST',
+      url: '/getDataBySection',
+      data:
+          {
+            'sectionId': sectionId,
+            'unitId': unitId,
+          },
+      success: function (data) {
+        $('.secondBlock').html(data);
+      },
+      error: (error) => {
+        console.log(error)
+      }
     });
-}
+  }
+  function getTerm(sectionId, unitId){
+    $.ajax({
+      type: 'GET',
+      url: "{{  route('term.index') }}" ,
+      data:
+          {
+            'sectionId': sectionId,
+            'unitId': unitId,
+          },
+      success: function (data) {
+        $('.secondBlock').html(data);
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    });
+  }
 </script>
+
 
 
 
