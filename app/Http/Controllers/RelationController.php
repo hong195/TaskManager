@@ -6,11 +6,18 @@ use App\Block;
 use App\Cell;
 use App\File;
 use App\Unit;
+use App\User;
 use Illuminate\Http\Request;
 
 class RelationController extends Controller
 {
 
+
+    public function test()
+    {
+        $var = User::first()->getAccessLevel();
+        dd($var); // проверяй тут
+    }
     public function unitRelation(Unit $unit)
     {
         return view('relation.unit_department', ['unit' => $unit ?? [] ]);
@@ -27,7 +34,6 @@ class RelationController extends Controller
             ->where('bu_id', $request->unitId)
             ->first();
 
-        //dd($request->all());
         return view('ajax.photobooth', [
             'file' => $file,
             'section_id' => $request->sectionId,
