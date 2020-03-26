@@ -13,13 +13,13 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->unsignedBigInteger('bu_id');
-            $table->foreign('bu_id')->references('id')->on('units');
-            $table->timestamps();
-        });
+//        Schema::create('departments', function (Blueprint $table) {
+//            $table->bigIncrements('id');
+//            $table->string('name');
+//            $table->unsignedBigInteger('bu_id');
+//            $table->foreign('bu_id')->references('id')->on('units');
+//            $table->timestamps();
+//        });
     }
 
     /**

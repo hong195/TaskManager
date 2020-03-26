@@ -11,6 +11,6 @@ class Department extends Model
     }
 
     public function blocks(){
-        return $this->hasMany('\App\Block', 'department_id');
+        return $this->hasMany('\App\Block', 'dep_id');
     }
 }

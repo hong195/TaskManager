@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\CellStatus;
+use App\Step;
 use Illuminate\Http\Request;
 
 class StepController extends Controller
@@ -29,18 +31,29 @@ class StepController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'person' => 'required',
+            'start_date' => 'required',
+            'status' => 'required|in:' . implode(',', CellStatus::cellStatuses()),
+            'deadline' => 'required'
+        ]);
+
+        $step = new Step($request->all());
+        $step->save();
+
+        return redirect(route('cells', $step->cell_id));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +64,7 @@ class StepController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,23 +75,37 @@ class StepController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Step $step
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Step $step)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'person' => 'required',
+            'start_date' => 'required',
+            'status' => 'required|in:' . implode(',', CellStatus::cellStatuses()),
+            'deadline' => 'required'
+        ]);
+
+        $step->update($request->all());
+
+        return redirect(route('cells', $step->cell_id));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Step $step
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Step $step)
     {
-        //
+        $cell_id = $step->cell_id;
+        $step->delete();
+
+        return redirect(route('cells', $cell_id));
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Block;
 use App\Cell;
+use App\Department;
+use App\Enums\CellStatus;
 use App\File;
 use App\Unit;
 use App\User;
@@ -20,7 +22,7 @@ class RelationController extends Controller
     }
     public function unitRelation(Unit $unit)
     {
-        return view('relation.unit_department', ['unit' => $unit ?? [] ]);
+        return view('relation.unit_department', ['unit' => $unit ?? []]);
     }
 
     public function ajaxblocks(Request $request)
@@ -48,16 +50,33 @@ class RelationController extends Controller
 
     public function depRelation(Department $department)
     {
-//        return view('relation.department_blocks', ['blocks' => $department->blocks]);
+        $unit = Unit::where('id', $department->bu_id)->first();
+        $active_dep = $department->id;
+        return view('relation.department_blocks',
+            [
+                'department' => $department, 'unit' => $unit, 'active_dep' => $active_dep
+            ]);
     }
 
     public function blockRelation(Block $block)
     {
-        return view('relation.block_cells', ['cells' => $block->cells]);
+        $department = Department::where('id', $block->dep_id)->first();
+        $unit = Unit::where('id', $department->bu_id)->first();
+        $active_block = $block->id;
+
+        return view('relation.block_cells', compact('block', 'department', 'unit', 'active_block'));
     }
 
     public function cellRelation(Cell $cell)
     {
-        return view('relation.cell_steps', ['steps' => $cell->steps]);
+        $block = Block::where('id', $cell->block_id)->first();
+        $department = Department::where('id', $block->dep_id)->first();
+        $unit = Unit::where('id', $department->bu_id)->first();
+        $cell_statuses = CellStatus::cellStatuses();
+        $active_cell = $cell->id;
+
+        return view('relation.cell_steps',
+               compact('cell', 'block', 'department', 'unit', 'cell_statuses', 'active_cell')
+        );
     }
 }

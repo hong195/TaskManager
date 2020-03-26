@@ -3,17 +3,19 @@
 @section('content')
     <div class="container-fluid departments">
         <div class="unit__logo">
-            <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
+            <a href="{{ route('units.show', $unit->id ) }}">
+                <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
+            </a>
         </div>
         <div class="row" >
             <div class="col-4  sectionlistItems">
-                @forelse($unit->departments as $one)
-                    <div class="staticList" data-department-id="{{ $one->id}}">
+                @forelse($unit->departments as $k => $one)
+                    <div class="staticList {{  $k === 0 ? 'active' : ''  }}" data-id="{{ $one->id}}">
                         <a href="#"> {{($one->name)}}</a>
                     </div>
                 @empty
                     <div class="content">
-                        <p>No Blocks</p>
+                        <p>Пусто</p>
                     </div>
                 @endforelse
                 <div class="exitDiv">
@@ -26,7 +28,7 @@
                     <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
                         @forelse($unit->departments as $k => $one)
                             <div class="{{ $k ===0 ? 'd-flex' : 'd-none' }} blocks flex-wrap justify-content-between"
-                                 data-department-id="{{ $one->id }}"
+                                 data-id="{{ $one->id }}"
                             >
                                 @foreach($one->blocks as $block)
                                     <div class="single-block d-flex align-items-center">
@@ -39,7 +41,7 @@
                             </div>
                         @empty
                             <div class="content">
-                                <p>No Blocks</p>
+                                <p>Пусто</p>
                             </div>
                         @endforelse
                     </div>

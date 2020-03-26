@@ -41,7 +41,7 @@
             </div>
             <div class="col-8 d-flex align-items-center justify-content-center">
                 <div class="secondBlock wrapper">
-                    @include('terms.index')
+{{--                    @include('terms.index')--}}
                 </div>
             </div>
         </div>
