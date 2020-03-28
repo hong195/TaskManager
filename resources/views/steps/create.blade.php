@@ -29,11 +29,25 @@
                     </div>
                     <div class="form-group">
                         <label for="start_date" class="col-form-label">Начало*</label>
-                        <input type="date" class="form-control" name="start_date" id="start_date" required>
+                        <div class="w-100">
+                            <date-picker class="w-100" v-model="startDate" :disabled-date="disableDate">
+                                <template slot="input">
+                                    <input type="text" class="form-control w-100" :value="formatDate(startDate)"
+                                           name="start_date" required />
+                                </template>
+                            </date-picker>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="deadline" class="col-form-label">Дедлайн*</label>
-                        <input type="date" class="form-control" name="deadline" id="deadline" required>
+                        <div class="w-100">
+                            <date-picker class="w-100" v-model="endDate" :disabled-date="disableDate">
+                                <template slot="input">
+                                    <input type="text" class="form-control w-100" :value="formatDate(endDate)"
+                                           name="deadline" required />
+                                </template>
+                            </date-picker>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

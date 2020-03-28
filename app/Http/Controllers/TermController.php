@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Term;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 class TermController extends Controller
 {
@@ -72,6 +74,10 @@ class TermController extends Controller
      */
     public function update(Request $request, Term $term)
     {
+        if (Gate::denies('manage')) {
+            return redirect(url('/'));
+        }
+
         $request->validate([
             'text' => 'required',
         ]);

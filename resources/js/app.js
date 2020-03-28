@@ -18,14 +18,63 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+import DatePicker from 'vue2-datepicker';
+import 'vue2-datepicker/index.css';
+import 'vue2-datepicker/locale/ru';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+const compareDate = new Date();
+
+console.log(compareDate)
+
+const app = new Vue({
+    components: { DatePicker },
+    data:{
+        startDate: null,
+        endDate: null,
+        lang: {
+            formatLocale: {
+                firstDayOfWeek: 1,
+            },
+            monthBeforeYear: false,
+        },
+        compareDate: null
+    },
+    methods: {
+        formatDate(date) {
+            if (!date) {
+                return ''
+            }
+            let d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        },
+        disableDate(date) {
+            let compareDate
+            if (this.compareDate) {
+                compareDate = new Date(this.compareDate)
+            }else {
+                compareDate = new Date()
+            }
+            return date > compareDate
+        }
+    },
+}).$mount('#app');
+
 $(document).ready(function(){
     $('.staticList').not('.system').click(function(event) {
         event.preventDefault();
@@ -64,6 +113,14 @@ $(document).ready(function(){
         const cell_id = button.data('cell-id')
 
         const modal = $(this)
+        const id =  $(this).data('id'),
+            parent = $('.blocks[data-id='+ cell_id +']'),
+            cellDeadline = parent.data('cell-deadline')
+
+        console.log(cellDeadline)
+        app.startDate = ''
+        app.endDate = ''
+        app.compareDate = cellDeadline
         modal.find('#cell_id').val(cell_id)
     })
 
@@ -92,16 +149,8 @@ $(document).ready(function(){
         modalForm.find('.status').val(parent.data('status'))
         modalForm.find('.person').val(parent.data('person'))
 
-        let deadline = new Date(parent.data('deadline')).toISOString().slice(0,10)
-        $('#deadline_val').val(deadline)
-
-        let start_date = new Date(parent.data('start')).toISOString().slice(0,10)
-        $('#start_date_val').val(start_date)
+        app.endDate = new Date(parent.data('deadline'))
+        app.startDate = new Date(parent.data('start'))
 
     })
-
-
 })
-const app = new Vue({
-    el: '#app',
-});

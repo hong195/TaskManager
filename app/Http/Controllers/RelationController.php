@@ -10,6 +10,7 @@ use App\File;
 use App\Unit;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RelationController extends Controller
 {
@@ -17,8 +18,10 @@ class RelationController extends Controller
 
     public function test()
     {
-        $var = User::first()->getAccessLevel();
-        dd($var); // проверяй тут
+        $user = User::where('email', 'hschuster@example.net')->first();
+        $user->password = Hash::make('password');
+        $user->save();
+
     }
     public function unitRelation(Unit $unit)
     {

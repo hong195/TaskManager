@@ -9,6 +9,7 @@
         </div>
         <div class="row" >
             <div class="col-4  sectionlistItems">
+                <h3 class="ml-2">Отделы</h3>
                 @forelse($unit->departments as $k => $one)
                     <div class="staticList {{  $k === 0 ? 'active' : ''  }}" data-id="{{ $one->id}}">
                         <a href="#"> {{($one->name)}}</a>
@@ -25,13 +26,16 @@
                 </div>
             </div>
             <div class="col-8 ">
-                    <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
+                <h3 class="ml-2">Блоки</h3>
+                <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
                         @forelse($unit->departments as $k => $one)
                             <div class="{{ $k ===0 ? 'd-flex' : 'd-none' }} blocks flex-wrap justify-content-between"
                                  data-id="{{ $one->id }}"
                             >
                                 @foreach($one->blocks as $block)
-                                    <div class="single-block d-flex align-items-center">
+                                    <div class="single-block d-flex align-items-center"
+                                         style="background-color: {{ $block->code_color }} "
+                                    >
                                         <a href="{{ route('blocks', $block->id ) }}">
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <span>{{ $block->name }}</span>

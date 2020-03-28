@@ -21,24 +21,34 @@
                     </div>
                     <div class="form-group">
                         <label for="status" class="col-form-label">Статус*</label>
-                        <select id="status" name="status" class="status form-control">
+                        <select id="status" name="status" class="status form-control" :disabled-date="disableDate">
                             <option value="">Выбирете статус*</option>
                             @foreach($cell_statuses as $status)
                                 <option value="{{ $status }}">{{ $status }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group datepicker ll-skin-latoja hasDatepicker">
                         <label  class="col-form-label">Начало*</label>
-                        <input type="date" class="form-control"
-                               id="start_date_val"
-                               name="start_date"
-                               value="" required>
+                        <div class="w-100">
+                            <date-picker class="w-100" v-model="startDate" :disabled-date="disableDate">
+                                <template slot="input">
+                                    <input type="text" class="form-control w-100" :value="formatDate(startDate)"
+                                           name="start_date" required />
+                                </template>
+                            </date-picker>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Дедлайн*</label>
-                        <input type="date" id="deadline_val"
-                               class="deadline form-control" name="deadline" value="" required>
+                        <div class="w-100">
+                            <date-picker class="w-100" v-model="endDate">
+                                <template slot="input">
+                                    <input type="text" class="form-control w-100" :value="formatDate(endDate)"
+                                           name="deadline" required />
+                                </template>
+                            </date-picker>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
