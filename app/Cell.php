@@ -13,4 +13,8 @@ class Cell extends Model
     {
         return $this->hasMany('\App\Step', 'cell_id');
     }
+
+    public function block() {
+        return $this->belongsTo('\App\Block');
+    }
 }

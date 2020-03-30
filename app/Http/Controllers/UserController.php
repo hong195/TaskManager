@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        dd(User::first()->permission->level_access);
+        //dd(User::first()->permission->level_access);
+        return view('layouts.users');
     }
     public function create(){
         return 1;

@@ -50,7 +50,7 @@
                                             <a class="step" href="#" data-id="{{ $step->id }}">
                                                 <i class="fa fa-search mx-1 " aria-hidden="true"></i>
                                             </a>
-                                            @if ((Auth::check() && Auth::user()->getAccessLevel() === 1))
+                                            @can('manage', $unit)
                                                 <a href="{{ route('step.update', $step->id) }}"
                                                    data-id="{{ $step->id }}" data-toggle="modal"
                                                    data-cell-id="{{ $cell->id }}"
@@ -62,12 +62,12 @@
                                                    data-toggle="modal" data-target="#destroyStep">
                                                     <i class="fa fa-trash mx-1 " aria-hidden="true"></i>
                                                 </a>
-                                            @endif
+                                            @endcan
                                         </div>
                                     </a>
                                 </div>
                             @endforeach
-                                @if ((Auth::check() && Auth::user()->getAccessLevel() === 1))
+                                @can('manage', $unit)
                                     <div class="w-100 mr-auto">
                                         <a href="#" data-cell-id="{{ $cell->id }}"
                                            class="add_step btn btn-primary ml-3" data-toggle="modal"
@@ -76,7 +76,7 @@
                                             Добавить задачу
                                         </a>
                                     </div>
-                                @endif
+                                @endcan
                         </div>
 
                     @empty

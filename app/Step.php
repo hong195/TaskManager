@@ -8,4 +8,8 @@ class Step extends Model
 {
     protected $guarded = [];
 
+    public function cell()
+    {
+        return $this->belongsTo('App\Cell');
+    }
 }

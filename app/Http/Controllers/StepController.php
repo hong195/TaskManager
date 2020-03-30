@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cell;
 use App\Enums\CellStatus;
 use App\Step;
+use App\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -39,7 +40,10 @@ class StepController extends Controller
      */
     public function store(Request $request)
     {
-        if (Gate::denies('manage')) {
+        $cell = Cell::where('id', $request->cell_id)->first();
+        $unit = $cell->block->department->unit;
+
+        if (Gate::denies('manage', $unit)) {
             return redirect(url('/'));
         }
 
@@ -54,7 +58,7 @@ class StepController extends Controller
         $step = new Step($request->all());
         $step->save();
 
-        $this->changeCellStatus($step);
+        //$this->changeCellStatus($step);
 
         return redirect(route('cells', $step->cell_id));
     }
@@ -105,12 +109,15 @@ class StepController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param Step $step
+     * @param Unit $aa
      * @return void
      */
     public function update(Request $request, Step $step)
     {
-        if (Gate::denies('manage')) {
-            return redirect(route('cells', $step->cell_id));
+        $unit = $step->cell->block->department->unit;
+
+        if (Gate::denies('manage', $unit)) {
+            return redirect('/');
         }
 
         $request->validate([
@@ -137,8 +144,10 @@ class StepController extends Controller
      */
     public function destroy(Step $step)
     {
-        if (Gate::denies('manage')) {
-            return redirect(route('cells', $step->cell_id));
+        $unit = $step->cell->block->department->unit;
+
+        if (Gate::denies('manage', $unit)) {
+            return redirect('/');
         }
 
         $cell_id = $step->cell_id;

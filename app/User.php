@@ -46,4 +46,8 @@ class User extends Authenticatable
     {
         return $this->role->level_access;
     }
+
+    public function company() {
+        return $this->belongsTo('App\Unit');
+    }
 }

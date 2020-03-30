@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Unit;
+use App\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,8 +26,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::define('manage', function ($user) {
-            return $user->getAccessLevel();
+        Gate::define('manage', function (User $user, Unit $unit) {
+            if ($user->getAccessLevel() <= 2) {
+                if ($user->getAccessLevel() === 1) {
+                    return true;
+                }
+                return $user->company_id === $unit->id;
+            }
+            return false;
         });
     }
 }

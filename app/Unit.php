@@ -24,4 +24,9 @@ class Unit extends Model
     {
         return $this->hasMany('\App\Department', 'bu_id');
     }
+
+    public function users() {
+        return $this->hasMany('\App\User', 'company_id');
+    }
+
 }
