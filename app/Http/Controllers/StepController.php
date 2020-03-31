@@ -58,28 +58,7 @@ class StepController extends Controller
         $step = new Step($request->all());
         $step->save();
 
-        //$this->changeCellStatus($step);
-
         return redirect(route('cells', $step->cell_id));
-    }
-
-    public function changeCellStatus($step) {
-        $cell = Cell::where('id', $step->cell_id)->first();
-
-        $all_steps = $cell->steps;
-
-        $completed_counter = 0;
-
-        foreach ($all_steps as $step) {
-            if ($step->status === CellStatus::COMPLETE) {
-                $completed_counter++;
-            }
-        }
-
-        if ($completed_counter === count($all_steps)) {
-            $cell->status = CellStatus::COMPLETE;
-            $cell->save();
-        }
     }
 
     /**
@@ -129,8 +108,6 @@ class StepController extends Controller
         ]);
 
         $step->update($request->all());
-
-        $this->changeCellStatus($step);
 
         return redirect(route('cells', $step->cell_id));
     }

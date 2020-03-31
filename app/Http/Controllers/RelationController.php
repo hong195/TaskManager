@@ -18,7 +18,8 @@ class RelationController extends Controller
 
     public function test()
     {
-        $user = User::where('email', 'alexeyhong10@gmail.com')->first();
+
+        $user = User::where('id', 3)->first();
         $user->password = Hash::make('123');
         $user->save();
 

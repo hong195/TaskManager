@@ -16,6 +16,7 @@ Auth::routes();
 Route::get('/', 'UnitController@index')->name('home');
 Route::get('/test', 'RelationController@test')->name('test');
 
+Route::get('/change-password', 'UserController@changePassword')->name('change-password');
 Route::resource('user', 'UserController');
 Route::resource('file', 'FileController');
 Route::resource('units', 'UnitController');
