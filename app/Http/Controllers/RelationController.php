@@ -19,7 +19,7 @@ class RelationController extends Controller
     public function test()
     {
 
-        $user = User::where('id', 3)->first();
+        $user = User::where('id', 4)->first();
         $user->password = Hash::make('123');
         $user->save();
 
@@ -67,8 +67,9 @@ class RelationController extends Controller
         $department = Department::where('id', $block->dep_id)->first();
         $unit = Unit::where('id', $department->bu_id)->first();
         $active_block = $block->id;
+        $cell_statuses = CellStatus::cellStatuses();
 
-        return view('relation.block_cells', compact('block', 'department', 'unit', 'active_block'));
+        return view('relation.block_cells', compact('block', 'department', 'unit', 'active_block', 'cell_statuses'));
     }
 
     public function cellRelation(Cell $cell)

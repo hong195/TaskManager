@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cell;
+use App\Enums\CellStatus;
 use Illuminate\Http\Request;
 
 class CellController extends Controller
 {
-
 
 
     /**
@@ -32,7 +33,7 @@ class CellController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +44,7 @@ class CellController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +55,7 @@ class CellController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,19 +66,27 @@ class CellController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Cell $cell
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cell $cell)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'deadline' => 'required',
+            'status' => 'required|in:' . implode(',', CellStatus::cellStatuses()),
+        ]);
+
+        $cell->update($request->all());
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

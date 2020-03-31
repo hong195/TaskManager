@@ -153,4 +153,26 @@ $(document).ready(function(){
         app.startDate = new Date(parent.data('start'))
 
     })
+
+    $('#cellEdit').on('show.bs.modal', function (event) {
+        const dataSet = event.relatedTarget.dataset,
+              modal = $(this)
+
+        modal.find('.name').val(dataSet.cellName)
+        modal.find('#status').val(dataSet.status)
+        modal.find('form').attr('action', dataSet.action)
+        app.endDate = new Date(dataSet.deadline)
+
+    })
+
+    $('#cellInfo').on('show.bs.modal', function (event) {
+        const dataSet = event.relatedTarget.dataset,
+            modal = $(this)
+
+        modal.find('.name').text(dataSet.cellName)
+        modal.find('#status, .status').text(dataSet.status)
+        modal.find('.deadline').text(dataSet.deadline)
+
+
+    })
 })
