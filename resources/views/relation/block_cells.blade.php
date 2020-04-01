@@ -9,6 +9,7 @@
         </div>
         <div class="row" >
             <div class="col-4  sectionlistItems">
+                <h3 class="ml-2">Блоки</h3>
                 @forelse($department->blocks as $k=> $block)
                     <div class="staticList {{  $block->id === $active_block ? 'active' : ''  }}"
                          data-id="{{ $block->id}}">
@@ -23,14 +24,15 @@
                     </div>
                 @endforelse
                 <div class="exitDiv">
-                    <a class="backBtn" href="{{ route('unit.systems', $unit->id) }}">
+                    <a class="backBtn" href="{{ route('departments', $unit->id) }}">
                         <h5><i class="fas fa-undo-alt"></i>Назад</h5>
                     </a>
                 </div>
             </div>
             <div class="col-8 ">
                 <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
-                    @forelse($department->blocks as $k => $block)
+                    <h3 class="ml-2">Ячейки</h3>
+                     @forelse($department->blocks as $k => $block)
                         <div class="{{ $block->id === $active_block ? 'd-flex' : 'd-none' }} blocks flex-wrap"
                              data-id="{{ $block->id }}"
                         >
@@ -45,6 +47,7 @@
                                          data-cell-name="{{ $cell->name }}"
                                          data-deadline="{{ $cell->deadline }}"
                                          data-status="{{ $cell->status }}"
+                                         data-status-readable="{{ __('status.'.$cell->status) }}"
                                          data-target="#cellInfo"
                                          data-toggle="modal"
                                          style="cursor: pointer;"

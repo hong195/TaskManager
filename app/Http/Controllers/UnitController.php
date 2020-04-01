@@ -54,6 +54,7 @@ class UnitController extends Controller
             'unit' => $unit,
             'sections' => $unit->sections,
             'terms' => Term::query()->where('bu_id', $unit->id)->get(),
+            'active_section' => 1,
         ]);
     }
 

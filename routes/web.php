@@ -11,7 +11,11 @@
 |
 */
 
-Auth::routes();
+Auth::routes(
+    [
+        'register' => false, 'reset' => false
+    ]
+);
 
 Route::get('/', 'UnitController@index')->name('home');
 Route::get('/test', 'RelationController@test')->name('test');
@@ -23,8 +27,7 @@ Route::resource('units', 'UnitController');
 Route::resource('cell', 'CellController');
 Route::resource('term', 'TermController');
 Route::resource('step', 'StepController');
-Route::get('/unit/{unit}/systems', 'RelationController@unitRelation')->name('unit.systems');
-Route::get('/department/{department}/blocks', 'RelationController@depRelation')->name('dep_blocks');
+Route::get('/unit/{unit}/departments', 'RelationController@unitRelation')->name('departments');
 Route::get('/block/{block}/cells', 'RelationController@blockRelation')->name('blocks');
 Route::get('/cell/{cell}/steps', 'RelationController@CellRelation')->name('cells');
 Route::post('/ajaxblocks', 'RelationController@ajaxblocks');

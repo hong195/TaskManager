@@ -21,7 +21,8 @@ window.Vue = require('vue');
 import DatePicker from 'vue2-datepicker';
 import 'vue2-datepicker/index.css';
 import 'vue2-datepicker/locale/ru';
-
+import 'lightgallery/dist/js/lightgallery-all.min.js'
+import 'lightgallery/dist/css/lightgallery.css'
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
@@ -30,8 +31,6 @@ import 'vue2-datepicker/locale/ru';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 const compareDate = new Date();
-
-console.log(compareDate)
 
 const app = new Vue({
     components: { DatePicker },
@@ -76,6 +75,7 @@ const app = new Vue({
 }).$mount('#app');
 
 $(document).ready(function(){
+
     $('.staticList').not('.system').click(function(event) {
         event.preventDefault();
         $('.staticList').removeClass('active')
@@ -93,7 +93,7 @@ $(document).ready(function(){
         const id =  $(this).data('id'),
               parent = $('.single-cell[data-id='+ id +']'),
               stepName = parent.data('name'),
-              status = parent.data('status'),
+              status = parent.data('status-readable'),
               deadline = parent.data('deadline'),
               person = parent.data('person'),
               start = parent.data('start'),
@@ -117,7 +117,6 @@ $(document).ready(function(){
             parent = $('.blocks[data-id='+ cell_id +']'),
             cellDeadline = parent.data('cell-deadline')
 
-        console.log(cellDeadline)
         app.startDate = ''
         app.endDate = ''
         app.compareDate = cellDeadline
@@ -151,7 +150,7 @@ $(document).ready(function(){
 
         app.endDate = new Date(parent.data('deadline'))
         app.startDate = new Date(parent.data('start'))
-
+        app.compareDate = parent.parent().data('cell-deadline')
     })
 
     $('#cellEdit').on('show.bs.modal', function (event) {
@@ -170,9 +169,8 @@ $(document).ready(function(){
             modal = $(this)
 
         modal.find('.name').text(dataSet.cellName)
-        modal.find('#status, .status').text(dataSet.status)
+        modal.find('#status, .status').text(dataSet.statusReadable)
         modal.find('.deadline').text(dataSet.deadline)
-
 
     })
 })

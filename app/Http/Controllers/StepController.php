@@ -58,7 +58,7 @@ class StepController extends Controller
         $step = new Step($request->all());
         $step->save();
 
-        return redirect(route('cells', $step->cell_id));
+        return redirect()->back();
     }
 
     /**
@@ -109,7 +109,7 @@ class StepController extends Controller
 
         $step->update($request->all());
 
-        return redirect(route('cells', $step->cell_id));
+        return redirect()->back();
     }
 
     /**
@@ -126,10 +126,8 @@ class StepController extends Controller
         if (Gate::denies('manage', $unit)) {
             return redirect('/');
         }
-
-        $cell_id = $step->cell_id;
         $step->delete();
 
-        return redirect(route('cells', $cell_id));
+        return redirect()->back();
     }
 }

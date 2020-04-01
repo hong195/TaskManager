@@ -21,10 +21,10 @@
                     </div>
                     <div class="form-group">
                         <label for="status" class="col-form-label">Статус*</label>
-                        <select id="status" name="status" class="status form-control" :disabled-date="disableDate">
+                        <select id="status" name="status" class="status form-control" >
                             <option value="">Выбирете статус*</option>
                             @foreach($cell_statuses as $status)
-                                <option value="{{ $status }}">{{ $status }}</option>
+                                <option value="{{ $status }}">{{ __('status.'.$status) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label class="col-form-label">Дедлайн*</label>
                         <div class="w-100">
-                            <date-picker class="w-100" v-model="endDate">
+                            <date-picker class="w-100" v-model="endDate" :disabled-date="disableDate">
                                 <template slot="input">
                                     <input type="text" class="form-control w-100" :value="formatDate(endDate)"
                                            name="deadline" required />
@@ -52,8 +52,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>
                 <input class="cell_id" type="hidden" name="cell_id" value="">
             </form>

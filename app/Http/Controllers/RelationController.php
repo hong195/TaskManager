@@ -36,6 +36,7 @@ class RelationController extends Controller
 
     public function getDataBySection(Request $request)
     {
+        $unit = Unit::where('id', $request->unitId)->first();
         $file = File::where('section_id', $request->sectionId)
             ->where('bu_id', $request->unitId)
             ->first();
@@ -43,7 +44,8 @@ class RelationController extends Controller
         return view('ajax.photobooth', [
             'file' => $file,
             'section_id' => $request->sectionId,
-            'unit_id' => $request->unitId
+            'unit_id' => $request->unitId,
+            'unit' => $unit
         ]);
     }
 

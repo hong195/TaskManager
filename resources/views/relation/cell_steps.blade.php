@@ -22,7 +22,7 @@
                     </div>
                 @endforelse
                 <div class="exitDiv">
-                    <a class="backBtn" href="{{ route('unit.systems', $unit->id) }}">
+                    <a class="backBtn" href="{{ route('blocks', $block->id) }}">
                         <h5><i class="fas fa-undo-alt"></i>Назад</h5>
                     </a>
                 </div>
@@ -39,6 +39,7 @@
                                 <div class="single-block single-cell d-flex align-items-center"
                                      data-id="{{ $step->id }}" data-name="{{ $step->name }}"
                                      data-deadline="{{ $step->deadline }}" data-status="{{ $step->status }}"
+                                     data-status-readable="{{ __('status.'.$step->status) }}"
                                      data-person="{{ $step->person }}" data-start="{{ $step->start_date }}"
                                 >
                                     <a href="#" class="d-flex" >
@@ -78,7 +79,6 @@
                                     </div>
                                 @endcan
                         </div>
-
                     @empty
                         <div class="content">
                             <p>Нет Задач</p>

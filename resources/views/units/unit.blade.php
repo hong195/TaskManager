@@ -6,14 +6,14 @@
         </div>
         <div class="row wrapper">
             <div class="sectionlistItems col-4">
-                @foreach($sections as $section)
+                @foreach($sections as $k => $section)
                     <div class="staticList
-                    <?php echo $section->type === 'term' ? 'active' : '';
+                    <?php echo $k === 0 ? 'active' : '';
                           echo $section->type === 'system' ? 'system' : ''
                     ?>
                     ">
                         @if ($section->type === 'system')
-                            <a  href="{{ route('unit.systems', $unit->id) }}"
+                            <a  href="{{ route('departments', $unit->id) }}"
                                 style="text-decoration:none"
                                 id="system"
                             >
@@ -21,7 +21,7 @@
                                 {{ $section->name }}
                             </a>
                         @elseif($section->type === 'term')
-                            <a class="link active item" onclick="getTerm({{$section->id}}, {{$unit->id}})" href="#">
+                            <a class="link  item" onclick="getTerm({{$section->id}}, {{$unit->id}})" href="#">
                                 <i class="{{$section->icon_code}}"></i>
                                 {{ $section->name }}
                             </a>
@@ -41,7 +41,11 @@
             </div>
             <div class="col-8 d-flex align-items-center justify-content-center">
                 <div class="secondBlock wrapper">
-{{--                    @include('terms.index')--}}
+                    <div id="lightgallery" class="section_image">
+                        <a href="http://blog.loc/storage/sections/asklepiy_brand_position.png">
+                            <img  src="http://blog.loc/storage/sections/asklepiy_brand_position.png" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,7 +53,7 @@
 @endsection
 <script>
   function getFile(sectionId, unitId){
-    $.ajax({
+    jQuery.ajax({
       type: 'POST',
       url: '/getDataBySection',
       data:
@@ -59,28 +63,15 @@
           },
       success: function (data) {
         $('.secondBlock').html(data);
+        $("#lightgallery").lightGallery();
       },
       error: (error) => {
         console.log(error)
       }
     });
   }
-  function getTerm(sectionId, unitId){
-    $.ajax({
-      type: 'GET',
-      url: "{{  route('term.index') }}" ,
-      data:
-          {
-            'sectionId': sectionId,
-            'unitId': unitId,
-          },
-      success: function (data) {
-        $('.secondBlock').html(data);
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    });
+  window.onload = function(){
+    getFile( {{ $active_section }}, {{ $unit->id }})
   }
 </script>
 

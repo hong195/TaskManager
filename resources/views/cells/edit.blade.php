@@ -20,7 +20,7 @@
                         <select id="status" name="status" class="status form-control">
                             <option value="">Выбирете статус*</option>
                             @foreach($cell_statuses as $status)
-                                <option value="{{ $status }}">{{ $status }}</option>
+                                <option value="{{ $status }}">{{ __('status.'.$status) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                    <button type="submit" class="btn btn-primary">Редактировать</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>
             </form>
 

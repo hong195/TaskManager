@@ -19,11 +19,11 @@
                         <input type="text" class="form-control" name="person" id="person" required>
                     </div>
                     <div class="form-group">
-                        <label  class="col-form-label">Статус*</label>
-                        <select  class="status" name="status" class="form-control">
+                        <label  for="new-status" class="col-form-label">Статус*</label>
+                        <select  class="status"  name="status" class="form-control">
                             <option value="">Выбирете статус*</option>
                             @foreach($cell_statuses as $status)
-                                <option value="{{ $status }}">{{ $status }}</option>
+                                <option value="{{ $status }}">{{ __('status.'.$status) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -51,8 +51,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>
                 <input id="cell_id" type="hidden" name="cell_id" value="">
             </form>
