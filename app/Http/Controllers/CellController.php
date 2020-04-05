@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Cell;
 use App\Enums\CellStatus;
+use App\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CellController extends Controller
 {
@@ -78,7 +80,25 @@ class CellController extends Controller
             'status' => 'required|in:' . implode(',', CellStatus::cellStatuses()),
         ]);
 
-        $cell->update($request->all());
+        if($request->hasfile('files')) {
+            foreach($request->file('files') as $uploadedFile)
+            {
+                $fileName =  pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME)
+                             . uniqid(). '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->storeAs('/public/files/', $fileName);
+
+                $file = new File();
+                $file->name = $uploadedFile->getClientOriginalName();
+                $file->cell_id = $cell->id;
+                $file->source = 'files/'. $fileName;
+                $file->size = $uploadedFile->getSize();
+                $file->extension = $uploadedFile->getClientOriginalExtension();
+
+                $file->save();
+            }
+        }
+
+        $cell->update($request->all('name', 'deadline', 'status'));
 
         return redirect()->back();
     }

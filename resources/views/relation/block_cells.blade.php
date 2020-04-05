@@ -48,6 +48,7 @@
                                          data-deadline="{{ $cell->deadline }}"
                                          data-status="{{ $cell->status }}"
                                          data-status-readable="{{ __('status.'.$cell->status) }}"
+                                         data-files="{{ $cell->files }}"
                                          data-target="#cellInfo"
                                          data-toggle="modal"
                                          style="cursor: pointer;"

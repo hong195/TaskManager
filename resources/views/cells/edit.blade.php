@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 @method('PATCH')
                 <div class="modal-body">
                     <div class="form-group">
@@ -33,6 +33,12 @@
                                            name="deadline" required />
                                 </template>
                             </date-picker>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="fileUpload">Файлы</label>
+                            <input type="file" multiple="" name="files[]" class="form-control-file" id="fileUpload">
                         </div>
                     </div>
                 </div>

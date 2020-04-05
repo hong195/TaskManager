@@ -16,6 +16,16 @@
                     <div class="d-flex align-items-center">
                         Дедлайн: <div class="deadline ml-1">Step Deadline</div>
                     </div>
+                    <div class="d-flex flex-column" v-if="files.length">
+                        <h6 style="font-weight: bold">
+                            Прикрепленные файлы
+                        </h6>
+                        <ul class="w-100">
+                           <li v-for="file in files" :key="file.id">
+                               <a :href="generateFileUrl(file.source)" download>@{{ file.name }}</a>
+                           </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

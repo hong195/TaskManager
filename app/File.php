@@ -17,4 +17,8 @@ class File extends Model
     {
        return $this->hasOne('App\Term', 'term_id');
     }
+
+    public function cell(){
+        return $this->hasOne('App\Cell', 'cell_id');
+    }
 }

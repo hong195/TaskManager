@@ -3,10 +3,11 @@
     <div class="container-fluid departments">
         <div class="unit__logo">
             <a href="{{ route('units.show', $unit->id ) }}">
-                <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
+                <img class="img-responsive" width="100px" height="100px"
+                     src="{{ asset('storage') . $unit->logo->source }}">
             </a>
         </div>
-        <div class="row" >
+        <div class="row">
             <div class="col-4  sectionlistItems">
                 <h3 class="ml-2">Ячейки</h3>
                 @forelse($block->cells  as $k => $cell)
@@ -42,7 +43,7 @@
                                      data-status-readable="{{ __('status.'.$step->status) }}"
                                      data-person="{{ $step->person }}" data-start="{{ $step->start_date }}"
                                 >
-                                    <a href="#" class="d-flex" >
+                                    <a href="#" class="d-flex">
                                         <div>
                                             <i class="fa fa-star" aria-hidden="true"></i>
                                             <span>{{ $step->name }}</span>
@@ -68,22 +69,35 @@
                                     </a>
                                 </div>
                             @endforeach
-                                @can('manage', $unit)
-                                    <div class="w-100 mr-auto">
-                                        <a href="#" data-cell-id="{{ $cell->id }}"
-                                           class="add_step btn btn-primary ml-3" data-toggle="modal"
-                                           data-target="#exampleModal">
-                                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                            Добавить задачу
-                                        </a>
-                                    </div>
-                                @endcan
+                            @can('manage', $unit)
+                                <div class="w-100 mr-auto">
+                                    <a href="#" data-cell-id="{{ $cell->id }}"
+                                       class="add_step btn btn-primary ml-3" data-toggle="modal"
+                                       data-target="#exampleModal">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        Добавить задачу
+                                    </a>
+                                </div>
+                            @endcan
+                            @if ($cell->files)
+                                <div class="ml-3 mt-5">
+                                    <h5 style="font-weight: bold">Прикрепленные файлы</h5>
+                                    <ul>
+                                        @foreach($cell->files as $file)
+                                            <li><a href="{{ asset('storage', $file->source) }}">{{ $file->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     @empty
                         <div class="content">
                             <p>Нет Задач</p>
                         </div>
                     @endforelse
+
+
                 </div>
             </div>
         </div>

@@ -17,4 +17,8 @@ class Cell extends Model
     public function block() {
         return $this->belongsTo('\App\Block');
     }
+
+    public function files() {
+        return $this->hasMany('App\File');
+    }
 }

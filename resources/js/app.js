@@ -43,9 +43,13 @@ const app = new Vue({
             },
             monthBeforeYear: false,
         },
-        compareDate: null
+        compareDate: null,
+        files: [],
     },
     methods: {
+        generateFileUrl($pathToFile) {
+          return location.origin + '/storage/' + $pathToFile
+        },
         formatDate(date) {
             if (!date) {
                 return ''
@@ -168,9 +172,13 @@ $(document).ready(function(){
         const dataSet = event.relatedTarget.dataset,
             modal = $(this)
 
+        app.files = [];
         modal.find('.name').text(dataSet.cellName)
         modal.find('#status, .status').text(dataSet.statusReadable)
         modal.find('.deadline').text(dataSet.deadline)
+        if (dataSet.files) {
+            app.files = JSON.parse(dataSet.files)
+        }
 
     })
 })
