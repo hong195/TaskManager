@@ -1,9 +1,11 @@
 @extends('layouts.default')
 @section('content')
     <div class="allBox container-fluid">
-        <div class="unit__logo">
-            <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
-        </div>
+        @if($unit->logo)
+            <div class="unit__logo">
+                <img class="img-responsive" width="100px" height="100px" src="{{ asset('storage') . $unit->logo->source }}">
+            </div>
+        @endif
         <div class="row wrapper">
             <div class="sectionlistItems col-4">
                 @foreach($sections as $k => $section)
@@ -36,11 +38,7 @@
             </div>
             <div class="col-8 d-flex align-items-center justify-content-center">
                 <div class="secondBlock wrapper">
-                    <div id="lightgallery" class="section_image">
-                        <a href="http://blog.loc/storage/sections/asklepiy_brand_position.png">
-                            <img  src="http://blog.loc/storage/sections/asklepiy_brand_position.png" alt="">
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -66,7 +64,7 @@
     });
   }
   window.onload = function(){
-    getFile( {{ 141 }}, {{ $unit->id }})
+    getFile( {{ $active_section }}, {{ $unit->id }})
   }
 </script>
 

@@ -53,7 +53,7 @@ class UnitController extends Controller
         return view('units.unit', [
             'unit' => $unit,
             'sections' => $unit->sections,
-            'active_section' => 1,
+            'active_section' => $unit->sections->first()->id,
         ]);
     }
 

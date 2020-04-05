@@ -1,12 +1,14 @@
 @extends('layouts.default')
 @section('content')
     <div class="container-fluid departments">
-        <div class="unit__logo">
-            <a href="{{ route('units.show', $unit->id ) }}">
-                <img class="img-responsive" width="100px" height="100px"
-                     src="{{ asset('storage') . $unit->logo->source }}">
-            </a>
-        </div>
+        @if($unit->logo)
+            <div class="unit__logo">
+                <a href="{{ route('units.show', $unit->id ) }}">
+                    <img class="img-responsive" width="100px" height="100px"
+                         src="{{ asset('storage') . $unit->logo->source }}">
+                </a>
+            </div>
+        @endif
         <div class="row">
             <div class="col-4  sectionlistItems">
                 <h3 class="ml-2">Ячейки</h3>
