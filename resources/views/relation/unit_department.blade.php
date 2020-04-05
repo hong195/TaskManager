@@ -9,7 +9,7 @@
         </div>
         <div class="row" >
             <div class="col-4  sectionlistItems">
-                <h3 class="ml-2">Отделы</h3>
+                <h3 class="ml-2">Системы</h3>
                 @forelse($unit->departments as $k => $one)
                     <div class="staticList {{  $k === 0 ? 'active' : ''  }}" data-id="{{ $one->id}}">
                         <a href="#"> {{($one->name)}}</a>
