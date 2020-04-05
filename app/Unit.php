@@ -11,13 +11,13 @@ class Unit extends Model
     protected $guarded =[];
 
     public function logo (){
-        return $this->hasOne('\App\File', 'bu_id');
+        return $this->morphOne('App\File', 'filable');
     }
 
 
     public function sections()
     {
-        return $this->belongsToMany('\App\Section', 'unit_section');
+        return $this->hasMany('\App\Section','bu_id');
     }
 
     public function departments()

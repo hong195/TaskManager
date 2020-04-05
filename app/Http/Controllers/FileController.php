@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Section;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -44,26 +45,23 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'section_id' => 'required',
-          'unit_id' => 'required'
+            'section_id' => 'required',
+            'section_img' => 'required'
         ]);
 
+        $section = Section::where('id', $request->section_id)->first();
         $file = $request->file('section_img');
 
-        if ($file) {
-            $fileName =  $file->getFilename().'.' .$file->getClientOriginalExtension();
-            $file->storeAs('public/sections',  $fileName);
+        $fileName =  $file->getFilename().'.' .$file->getClientOriginalExtension();
+        $file->storeAs('public/sections',  $fileName);
 
-            $attachment = new File();
-            $attachment->section_id = $request->section_id;
-            $attachment->bu_id = $request->unit_id;
-            $attachment->name = $file->getFilename();
-            $attachment->source = '/sections/' . $fileName;
-            $attachment->extension = $file->getClientOriginalExtension();
-            $attachment->size = $file->getSize();
+        $attachment = new File;
+        $attachment->name = $file->getFilename();
+        $attachment->source = '/sections/' . $fileName;
+        $attachment->extension = $file->getClientOriginalExtension();
+        $attachment->size = $file->getSize();
 
-            $attachment->save();
-        }
+        $section->file()->save($attachment);
 
         return redirect(route('units.show', $request->unit_id));
     }

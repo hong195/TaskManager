@@ -53,7 +53,6 @@ class UnitController extends Controller
         return view('units.unit', [
             'unit' => $unit,
             'sections' => $unit->sections,
-            'terms' => Term::query()->where('bu_id', $unit->id)->get(),
             'active_section' => 1,
         ]);
     }

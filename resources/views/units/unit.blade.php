@@ -20,11 +20,6 @@
                                 <i class="{{$section->icon_code}}"></i>
                                 {{ $section->name }}
                             </a>
-                        @elseif($section->type === 'term')
-                            <a class="link  item" onclick="getTerm({{$section->id}}, {{$unit->id}})" href="#">
-                                <i class="{{$section->icon_code}}"></i>
-                                {{ $section->name }}
-                            </a>
                         @else
                             <a class="link" onclick="getFile({{$section->id}}, {{$unit->id}})" href="#">
                                 <i class="{{$section->icon_code}}"></i>
@@ -71,7 +66,7 @@
     });
   }
   window.onload = function(){
-    getFile( {{ $active_section }}, {{ $unit->id }})
+    getFile( {{ 141 }}, {{ $unit->id }})
   }
 </script>
 

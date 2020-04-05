@@ -7,6 +7,7 @@ use App\Cell;
 use App\Department;
 use App\Enums\CellStatus;
 use App\File;
+use App\Section;
 use App\Unit;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class RelationController extends Controller
     public function test()
     {
 
-        $user = User::where('id', 4)->first();
+        $user = User::where('email', 'alexeyhong10@gmail.com')->first();
         $user->password = Hash::make('123');
         $user->save();
 
@@ -37,12 +38,10 @@ class RelationController extends Controller
     public function getDataBySection(Request $request)
     {
         $unit = Unit::where('id', $request->unitId)->first();
-        $file = File::where('section_id', $request->sectionId)
-            ->where('bu_id', $request->unitId)
-            ->first();
+        $section = Section::where('id', $request->sectionId)->first();
 
         return view('ajax.photobooth', [
-            'file' => $file,
+            'file' => $section->file,
             'section_id' => $request->sectionId,
             'unit_id' => $request->unitId,
             'unit' => $unit

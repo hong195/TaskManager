@@ -19,6 +19,6 @@ class Cell extends Model
     }
 
     public function files() {
-        return $this->hasMany('App\File');
+        return $this->morphMany('App\File', 'filable');
     }
 }

@@ -87,14 +87,13 @@ class CellController extends Controller
                              . uniqid(). '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->storeAs('/public/files/', $fileName);
 
-                $file = new File();
+                $file = new File;
                 $file->name = $uploadedFile->getClientOriginalName();
-                $file->cell_id = $cell->id;
                 $file->source = 'files/'. $fileName;
                 $file->size = $uploadedFile->getSize();
                 $file->extension = $uploadedFile->getClientOriginalExtension();
 
-                $file->save();
+                $cell->files()->save($file);
             }
         }
 

@@ -8,10 +8,11 @@ class File extends Model
 {
     protected $guarded = [];
 
-    public function unit()
+    public function filable()
     {
-        return $this->hasOne('\App\Unit', 'bu_id');
+        return $this->morphTo();
     }
+
 
     public function term()
     {
