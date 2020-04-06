@@ -14,6 +14,6 @@ class Block extends Model
     }
 
     public function department() {
-        return $this->belongsTo('\App\Department', 'id');
+        return $this->belongsTo('\App\Department', 'dep_id');
     }
 }

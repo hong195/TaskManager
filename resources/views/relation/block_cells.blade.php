@@ -37,37 +37,43 @@
                              data-id="{{ $block->id }}"
                         >
                             @foreach($block->cells as $cell)
-                                <div class="single-block d-flex align-items-center"
+                                <div class="single-block d-flex flex-wrap align-items-center"
                                 >
-                                    <a href="{{ route('cells', $cell->id ) }}">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <span>{{ $cell->name }}</span>
-                                    </a>
-                                    <div class="view__cell"
-                                         data-cell-name="{{ $cell->name }}"
-                                         data-deadline="{{ $cell->deadline }}"
-                                         data-status="{{ $cell->status }}"
-                                         data-status-readable="{{ __('status.'.$cell->status) }}"
-                                         data-files="{{ $cell->files }}"
-                                         data-target="#cellInfo"
-                                         data-toggle="modal"
-                                         style="cursor: pointer;"
-                                    >
-                                        <i class="fa fa-search mx-1 " aria-hidden="true"></i>
-                                    </div>
-                                    @can('manage', $unit)
-                                        <div class="edit__cell"
-                                             data-action="{{ route('cell.update', $cell->id) }}"
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('cells', $cell->id ) }}">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <span>{{ $cell->name }}</span>
+                                        </a>
+                                        <div class="view__cell"
                                              data-cell-name="{{ $cell->name }}"
                                              data-deadline="{{ $cell->deadline }}"
                                              data-status="{{ $cell->status }}"
-                                             data-target="#cellEdit"
+                                             data-status-readable="{{ __('status.'.$cell->status) }}"
+                                             data-files="{{ $cell->files }}"
+                                             data-target="#cellInfo"
                                              data-toggle="modal"
                                              style="cursor: pointer;"
                                         >
-                                            <i class="fa fa-pencil-square-o mx-1" aria-hidden="true"></i>
+                                            <i class="fa fa-search mx-1 " aria-hidden="true"></i>
                                         </div>
-                                    @endcan
+                                        @can('manage', $unit)
+                                            <div class="edit__cell"
+                                                 data-action="{{ route('cell.update', $cell->id) }}"
+                                                 data-cell-name="{{ $cell->name }}"
+                                                 data-deadline="{{ $cell->deadline }}"
+                                                 data-status="{{ $cell->status }}"
+                                                 data-target="#cellEdit"
+                                                 data-toggle="modal"
+                                                 style="cursor: pointer;"
+                                            >
+                                                <i class="fa fa-pencil-square-o mx-1" aria-hidden="true"></i>
+                                            </div>
+                                        @endcan
+                                    </div>
+                                    <div class="w-100 mt-2">
+                                        <h6 style="color: #fff;">Статус: <span>{{ __('status.'. $cell->status) }}</span></h6>
+                                        <h6 style="color: #fff;">Дедлайн: <span>{{ __('status.'. $cell->deadline) }}</span></h6>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
