@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     public function unit(){
-        return $this->belongsTo('\App\Unit', 'id');
+        return $this->belongsTo('\App\Unit', 'bu_id');
     }
 
     public function blocks(){

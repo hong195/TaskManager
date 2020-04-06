@@ -86,7 +86,7 @@
                                     <h5 style="font-weight: bold">Прикрепленные файлы</h5>
                                     <ul>
                                         @foreach($cell->files as $file)
-                                            <li><a href="{{ asset('storage', $file->source) }}">{{ $file->name }}</a>
+                                            <li><a href="{{ asset('storage') . '/' .$file->source }}">{{ $file->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
