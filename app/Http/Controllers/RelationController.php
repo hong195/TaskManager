@@ -80,8 +80,25 @@ class RelationController extends Controller
 
     public function test()
     {
-        $HRDeps = Department::where('name', 'like', 'логистики%')->pluck('id')->toArray();
-        dd(array_values($HRDeps));
+//        $allHrCells = Cell::query()->where('block_id', '<', 11)->count();
+//        dd($allHrCells);
+//        $allFinancialCells = Cell::where([['block_id', '>=', 11], ['block_id', '<=',  18]])->count();
+//        dd($allFinancialCells);
+//        $allMarketing = Cell::where([['block_id', '>=', 19], ['block_id', '<=',  28]])->count();
+//        dd($allMarketing);
+//            $allIt = Cell::where([['block_id', '>=', 29], ['block_id', '<=',  37]])->count();
+//            dd($allIt);
+//            $allLaw = Cell::where([['block_id', '>=', 38], ['block_id', '<=',  47]])->count();
+//            dd($allLaw);
+//        $PR = Cell::where([['block_id', '>=', 48], ['block_id', '<=',  54]])->count();
+//        dd($PR);
+//        $transportCells = Cell::where([['block_id', '>=', 55], ['block_id', '<=',  59]])->count();
+//        dd($transportCells);
+//        $CMDcells = Cell::where([['block_id', '>=', 60], ['block_id', '<=',  63]])->count();
+//        dd($CMDcells);
+        $finalized = Cell::where('status','complete')->get();
+        dd($finalized);
+
     }
 
     protected function getHRIds()
@@ -113,7 +130,7 @@ class RelationController extends Controller
     {
         return [ 6, 14, 22, 30, 38, 46, 54];
     }
-    protected function getLogistics($job)
+    protected function getLogistics()
     {
         return [7, 15, 23, 31, 39, 47, 55];
     }
