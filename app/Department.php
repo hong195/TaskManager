@@ -13,4 +13,14 @@ class Department extends Model
     public function blocks(){
         return $this->hasMany('\App\Block', 'dep_id');
     }
+
+    public function cells()
+    {
+        return $this->hasManyThrough('App\Cell',
+            'App\Block',
+            'dep_id',
+            'block_id',
+            'id',
+            'id');
+    }
 }
