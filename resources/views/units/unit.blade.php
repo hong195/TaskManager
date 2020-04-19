@@ -11,13 +11,21 @@
                 @foreach($sections as $k => $section)
                     <div class="staticList
                     <?php echo $k === 0 ? 'active' : '';
-                          echo $section->type === 'system' ? 'system' : ''
+                          echo in_array($section->type, ['system', 'statistics']) ? 'system' : ''
                     ?>
                     ">
                         @if ($section->type === 'system')
                             <a  href="{{ route('departments', $unit->id) }}"
                                 style="text-decoration:none"
                                 id="system"
+                            >
+                                <i class="{{$section->icon_code}}"></i>
+                                {{ $section->name }}
+                            </a>
+                        @elseif($section->type === 'statistics')
+                            <a  href="{{ route('statistics', $unit->id) }}"
+                                style="text-decoration:none"
+                                class="system"
                             >
                                 <i class="{{$section->icon_code}}"></i>
                                 {{ $section->name }}
@@ -44,30 +52,6 @@
         </div>
     </div>
 @endsection
-<script>
-  function getFile(sectionId, unitId){
-    jQuery.ajax({
-      type: 'POST',
-      url: '/getDataBySection',
-      data:
-          {
-            'sectionId': sectionId,
-            'unitId': unitId,
-          },
-      success: function (data) {
-        $('.secondBlock').html(data);
-        $("#lightgallery").lightGallery();
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    });
-  }
-  window.onload = function(){
-    getFile( {{ $active_section }}, {{ $unit->id }})
-  }
-</script>
-
 
 
 

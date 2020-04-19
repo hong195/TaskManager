@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use function foo\func;
 
 class RelationController extends Controller
 {
@@ -81,192 +82,200 @@ class RelationController extends Controller
 
     public function getCellsBySystemGC()
     {
-        return [
-            'asklepiy' => [
-                'hr' => [
-                    'in progress' => [
-                        'plan' => 47,
-                        'fact' => 1
+        $companies = ['ASKLEPIY', 'ASKLEPIY Group', 'Oxymed', 'NIKA PHARM', 'ZAMONA RANO', 'MARI PHARM'];
+        $data = [];
+
+        foreach ($companies as $company) {
+            if ($company == 'ASKLEPIY') {
+                $data[$company] = [
+                    'HR' => [
+                        'in progress' => [
+                            'plan' => 47,
+                            'fact' => 1
+                        ],
+                        'done' => [
+                            'plan' => 1,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'financial' => [
-                    'in progress' => [
-                        'plan' => 41,
-                        'fact' => 1
+                    'Financial' => [
+                        'in progress' => [
+                            'plan' => 41,
+                            'fact' => 1
+                        ],
+                        'done' => [
+                            'plan' => 1,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'marketing' => [
-                    'in progress' => [
-                        'plan' => 45,
-                        'fact' => 1
+                    'Marketing' => [
+                        'in progress' => [
+                            'plan' => 45,
+                            'fact' => 1
+                        ],
+                        'done' => [
+                            'plan' => 1,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'CMD' => [
-                    'in progress' => [
-                        'plan' => 0,
-                        'fact' => 0
+                    'CMD' => [
+                        'in progress' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ],
+                        'done' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 0,
-                        'fact' => 0
-                    ]
-                ],
-                'Logistics' => [
-                    'in progress' => [
-                        'plan' => 0,
-                        'fact' => 0
+                    'Logistics' => [
+                        'in progress' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ],
+                        'done' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 0,
-                        'fact' => 0
-                    ]
-                ],
-                'Law' => [
-                    'in progress' => [
-                        'plan' => 42,
-                        'fact' => 1
+                    'Law' => [
+                        'in progress' => [
+                            'plan' => 42,
+                            'fact' => 1
+                        ],
+                        'done' => [
+                            'plan' => 1,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'IT' => [
-                    'in progress' => [
-                        'plan' => 50,
-                        'fact' => 0
+                    'IT' => [
+                        'in progress' => [
+                            'plan' => 50,
+                            'fact' => 0
+                        ],
+                        'done' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 0,
-                        'fact' => 0
-                    ]
-                ],
-                'PR' => [
-                    'in progress' => [
-                        'plan' => 25,
-                        'fact' => 1
+                    'PR' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 1
+                        ],
+                        'done' => [
+                            'plan' => 1,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'Summary' => [
-                    'in progress' => [
-                        'plan' => 250,
-                        'fact' => 5
+                    'Summary' => [
+                        'in progress' => [
+                            'plan' => 250,
+                            'fact' => 5
+                        ],
+                        'done' => [
+                            'plan' => 5,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 5,
-                        'fact' => 0
-                    ]
-                ],
-            ],
-            'asklepiy_group' => [
-                'hr' => [
-                    'in progress' => [
-                        'plan' => 235,
-                        'fact' => 5
+                ];
+            } else {
+                $data[$company] = [
+                    'HR' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 5
+                        ],
+                        'done' => [
+                            'plan' => 5,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 5,
-                        'fact' => 0
-                    ]
-                ],
-                'financial' => [
-                    'in progress' => [
-                        'plan' => 205,
-                        'fact' => 5
+                    'Financial' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 5
+                        ],
+                        'done' => [
+                            'plan' => 5,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 5,
-                        'fact' => 0
-                    ]
-                ],
-                'marketing' => [
-                    'in progress' => [
-                        'plan' => 225,
-                        'fact' => 5
+                    'Marketing' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 5
+                        ],
+                        'done' => [
+                            'plan' => 5,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 5,
-                        'fact' => 0
-                    ]
-                ],
-                'CMD' => [
-                    'in progress' => [
-                        'plan' => 0,
-                        'fact' => 0
+                    'CMD' => [
+                        'in progress' => [
+                            'plan' => 40,
+                            'fact' => 0
+                        ],
+                        'done' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 0,
-                        'fact' => 0
-                    ]
-                ],
-                'Logistics' => [
-                    'in progress' => [
-                        'plan' => 0,
-                        'fact' => 0
+                    'Logistics' => [
+                        'in progress' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ],
+                        'done' => [
+                            'plan' => 0,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 0,
-                        'fact' => 0
-                    ]
-                ],
-                'Law' => [
-                    'in progress' => [
-                        'plan' => 210,
-                        'fact' => 5
+                    'Law' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 15
+                        ],
+                        'done' => [
+                            'plan' => 15,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'IT' => [
-                    'in progress' => [
-                        'plan' => 50,
-                        'fact' => 0
+                    'IT' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 15
+                        ],
+                        'done' => [
+                            'plan' => 15,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 0,
-                        'fact' => 0
-                    ]
-                ],
-                'PR' => [
-                    'in progress' => [
-                        'plan' => 25,
-                        'fact' => 1
+                    'PR' => [
+                        'in progress' => [
+                            'plan' => 25,
+                            'fact' => 15
+                        ],
+                        'done' => [
+                            'plan' => 15,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 1,
-                        'fact' => 0
-                    ]
-                ],
-                'Summary' => [
-                    'in progress' => [
-                        'plan' => 250,
-                        'fact' => 5
+                    'Summary' => [
+                        'in progress' => [
+                            'plan' => 235,
+                            'fact' => 5
+                        ],
+                        'done' => [
+                            'plan' => 5,
+                            'fact' => 0
+                        ]
                     ],
-                    'done' => [
-                        'plan' => 5,
-                        'fact' => 0
-                    ]
-                ],
-            ]
-        ];
+                ];
+            }
+        }
+
+        return $data;
     }
 
     public function getDataForAnalytics2()
@@ -531,59 +540,417 @@ class RelationController extends Controller
         ];
     }
 
-    public function getDataForAnalytics3(Unit $unit)
+    public function getDataForAnalytics3()
     {
         //TODO make unit data
         return [
-            'asklepiy' => [
-                'april' => [
+            'april' => [
+                'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'may' => [
-                    'in_progress' => 0,
+                'Financial' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'june' => [
-                    'in_progress' => 0,
+                'Marketing' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'july' => [
-                    'in_progress' => 0,
+                'CMD' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'august' => [
-                    'in_progress' => 0,
+                'Logistics' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'september' => [
-                    'in_progress' => 0,
+                'Law' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'october' => [
-                    'in_progress' => 0,
+                'IT' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'november' => [
-                    'in_progress' => 0,
+                'PR' => [
+                    'in_progress' => 1,
                     'fact' => 0,
                     'complete' => 0
                 ],
-                'december' => [
-                    'in_progress' => 0,
+            ],
+            'may' => [
+                'HR' => [
+                    'in_progress' => 5,
                     'fact' => 0,
                     'complete' => 0
                 ],
-            ]
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'june' => [
+                'HR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'july' => [
+                'HR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'august' => [
+                'HR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'september' => [
+                'HR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'october' => [
+                'HR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'november' => [
+                'HR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
+            'december' => [
+                'HR' => [
+                    'in_progress' => 10,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Financial' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Marketing' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'CMD' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Logistics' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'Law' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'IT' => [
+                    'in_progress' => 5,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+                'PR' => [
+                    'in_progress' => 15,
+                    'fact' => 0,
+                    'complete' => 0
+                ],
+            ],
         ];
+    }
 
+    public function statistics(Unit $unit)
+    {
+        $totalStat = $this->getCellsBySystemGC();
+        $companyStat = $this->getDataForAnalytics2();
+        $companyDepStat = $this->getDataForAnalytics3();
+
+        $companies = [
+            'asklepiy' => 'ASKLEPIY',
+            'asklepiy_group' => 'ASKLEPIY Group',
+            'oxymed' => 'Oxymed',
+            'nika_pharm' => 'NIKA PHARM',
+            'zamona_rano' => 'ZAMONA RANO',
+            'mari_pharm' => 'MARI PHARM'
+        ];
+        $departments = [];
+
+        foreach ($totalStat as $company => $dep) {
+            $departments = array_keys($dep);
+            break;
+        }
+
+        return view('relation.statistics',
+            compact(
+                'unit', 'totalStat', 'companyStat', 'departments', 'companies', 'companyDepStat'
+            )
+        );
     }
 
     public function test()

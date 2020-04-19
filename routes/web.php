@@ -34,6 +34,7 @@ Route::post('/ajaxblocks', 'RelationController@ajaxblocks');
 Route::post('/getDataBySection', 'RelationController@getDataBySection');
 Route::post('/ajaxphotobooth', 'RelationController@ajaxphotobooth');
 Route::get('/getCellsBySystemGC', 'RelationController@getCellsBySystemGC');
+Route::get('/analytics/{unit}', 'RelationController@statistics')->name('statistics');
 
 
 
