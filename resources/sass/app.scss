@@ -6,6 +6,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.steps__table td{
+  padding-left: 10px;
+}
+.steps__table td{
+  font-size: 16px;
+}
 a {
   text-decoration: none !important;
 }
@@ -135,7 +141,7 @@ img {
   align-items: center;
 }
 .single-block {
-  width: 31%;
+  width: 30%;
   background: #316f31a8;
   margin: 0 10px 20px 10px;
   padding: 8px 15px;

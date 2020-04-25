@@ -80,6 +80,13 @@ const app = new Vue({
 
 $(document).ready(function(){
 
+    $('.steps.staticList').click(function() {
+        const id  = $(this).data('id')
+
+        $('.step__wrapper').removeClass('d-block').addClass('d-none')
+        $('.step__wrapper[data-id="' + id + '"]').removeClass('d-none').addClass('d-block')
+
+    })
     $('.staticList').not('.system').click(function(event) {
         event.preventDefault();
         $('.staticList').removeClass('active')
@@ -142,7 +149,7 @@ $(document).ready(function(){
              url = button.attr('href'),
              cell_id = button.data('cell-id')
         const step_id = button.data('id'),
-            parent = $('.single-cell[data-id='+ step_id +']')
+            parent = $('tr[data-id='+ step_id +']')
         const modalForm = $(this).find('form')
 
         modalForm.attr('action', url)

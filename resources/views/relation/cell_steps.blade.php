@@ -13,7 +13,7 @@
             <div class="col-4  sectionlistItems">
                 <h3 class="ml-2">Ячейки</h3>
                 @forelse($block->cells  as $k => $cell)
-                    <div class="staticList {{ $cell->id === $active_cell ? 'active' : '' }}" data-id="{{ $cell->id}}">
+                    <div class="steps staticList {{ $cell->id === $active_cell ? 'active' : '' }}" data-id="{{ $cell->id}}">
                         <a href="{{ route('cells', $cell->id) }}">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             {{$cell->name}}
@@ -34,26 +34,34 @@
                 <h3 class="ml-2">Шаги</h3>
                 <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
                     @forelse($block->cells as $k => $cell)
-                        <div class="{{ $cell->id === $active_cell ? 'd-flex' : 'd-none' }} blocks flex-wrap "
-                             data-id="{{ $cell->id }}"
-                             data-cell-deadline="{{ $cell->deadline }}"
+                        <div data-id="{{ $cell->id }}"
+                             class="step__wrapper {{ $cell->id === $active_cell ? 'd-block' : 'd-none' }} w-100"
                         >
-                            @foreach($cell->steps as $k => $step)
-                                <div style="width: 100%;" class="single-block single-cell d-flex align-items-center"
-                                     data-id="{{ $step->id }}" data-name="{{ $step->name }}"
-                                     data-deadline="{{ $step->deadline }}" data-status="{{ $step->status }}"
-                                     data-status-readable="{{ __('status.'.$step->status) }}"
-                                     data-person="{{ $step->person }}" data-start="{{ $step->start_date }}"
-                                >
-                                    <a href="#" class="d-flex">
-                                        <div class="d-flex flex-wrap">
-                                            <span><i class="fa fa-star" aria-hidden="true"></i> {{ $step->name }}</span>
-                                            <span class="w-100">Испольнитель: {{ $step->name }}</span>
-                                            <span class="w-100">Статус: {{ __('status.'.$step->status) }}</span>
-                                            <span class="w-100">Дедлайн: {{ $step->deadline }}</span>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            @can('manage', $unit)
+                            <table class="table-bordered w-100 steps__table"
+                                   data-id="{{ $cell->id }}"
+                            >
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Дата визуализаци</th>
+                                    <th>Дедлайн</th>
+                                    <th>Отвественный</th>
+                                    <th>Статус</th>
+                                    @can('manage', $unit)
+                                        <th>Действия</th>
+                                    @endcan
+                                </tr>
+                                @forelse($cell->steps as $k => $step)
+                                    <tr data-id="{{ $step->id }}" data-name="{{ $step->name }}"
+                                        data-deadline="{{ $step->deadline }}" data-status="{{ $step->status }}"
+                                        data-status-readable="{{ __('status.'.$step->status) }}"
+                                        data-person="{{ $step->person }}" data-start="{{ $step->start_date }}">
+                                        <td>{{ $step->name }}</td>
+                                        <td>{{ $step->start_date }}</td>
+                                        <td>{{ $step->deadline }}</td>
+                                        <td>{{ $step->person }}</td>
+                                        <td>{{ __('status.'.$step->status) }}</td>
+                                        @can('manage', $unit)
+                                            <td>
                                                 <a href="{{ route('step.update', $step->id) }}"
                                                    data-id="{{ $step->id }}" data-toggle="modal"
                                                    data-cell-id="{{ $cell->id }}"
@@ -65,13 +73,17 @@
                                                    data-toggle="modal" data-target="#destroyStep">
                                                     <i class="fa fa-trash mx-1 " aria-hidden="true"></i>
                                                 </a>
-                                            @endcan
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
+                                            </td>
+                                        @endcan
+                                    </tr>
+                                @empty
+                                    <tr class="text-center">
+                                        <td colspan="6">Пусто</td>
+                                    </tr>
+                                @endforelse
+                            </table>
                             @can('manage', $unit)
-                                <div class="w-100 mr-auto">
+                                <div class="w-100 mr-auto mt-4">
                                     <a href="#" data-cell-id="{{ $cell->id }}"
                                        class="add_step btn btn-primary ml-3" data-toggle="modal"
                                        data-target="#exampleModal">
@@ -85,7 +97,8 @@
                                     <h5 style="font-weight: bold">Прикрепленные файлы</h5>
                                     <ul>
                                         @foreach($cell->files as $file)
-                                            <li><a href="{{ asset('storage') . '/' .$file->source }}">{{ $file->name }}</a>
+                                            <li>
+                                                <a href="{{ asset('storage') . '/' .$file->source }}">{{ $file->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -93,11 +106,8 @@
                             @endif
                         </div>
                     @empty
-                        <div class="content">
-                            <p>Нет Задач</p>
-                        </div>
+                        Пусто
                     @endforelse
-
 
                 </div>
             </div>
