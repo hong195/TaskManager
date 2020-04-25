@@ -7,7 +7,7 @@
             <a href="{{ route('units.show', $unit->id) }}" class="ml-3 mb-3" style="font-size: 20px;">Назад</a>
             @if($unit->id === 1 || $unit->id == 2)
                 <div class="col-md-12" style="overflow: auto">
-                    <h2>Статистика Отделов</h2>
+                    <h2>Статистика по Направлениям</h2>
 
                     <table class=" table-bordered" width="100%">
                         <tr>
@@ -17,7 +17,7 @@
                                     <table width="100%">
                                         <tr>{{ $company }}</tr>
                                         <tr>
-                                            <td style="border: none;">В работе
+                                            <td style="border: none;">Визуализация
                                                 <table width="100%">
                                                     <tr>
                                                         <td style="border: none;">План</td>
@@ -25,7 +25,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td style="border: none;">В работе
+                                            <td style="border: none;">Завершено
                                                 <table width="100%">
                                                     <tr>
                                                         <td style="border: none;">План</td>
@@ -52,7 +52,7 @@
                     </table>
                 </div>
                 <div class="col-md-12" style="overflow: auto; margin: 50px 0 50px;">
-                    <h2>Статистика компаний</h2>
+                    <h2>Статистика по BU</h2>
 
                     <table class=" table-bordered" width="100%">
                         <tr>
@@ -62,7 +62,7 @@
                                     <table width="100%">
                                         <tr>{{ $mounth }}</tr>
                                         <tr>
-                                            <td style="border: none;">В работе
+                                            <td style="border: none;">Визуализация
                                                 <table width="100%">
                                                     <tr>
                                                         <td style="border: none;">План</td>
@@ -98,7 +98,7 @@
                 </div>
             @else
                 <div class="col-md-12" style="overflow: auto; margin: 50px 0 50px;">
-                    <h2>Статистика</h2>
+                    <h2>Статистика по Направлениям</h2>
 
                     <table class=" table-bordered" width="100%">
                         <tr>
@@ -108,7 +108,7 @@
                                     <table width="100%">
                                         <tr>{{ $month }}</tr>
                                         <tr>
-                                            <td style="border: none;">В работе
+                                            <td style="border: none;">Визуализация
                                                 <table width="100%">
                                                     <tr>
                                                         <td style="border: none;">План</td>

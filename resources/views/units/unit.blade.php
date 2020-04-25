@@ -52,6 +52,30 @@
         </div>
     </div>
 @endsection
+<script>
+  function getFile(sectionId, unitId){
+    jQuery.ajax({
+      type: 'POST',
+      url: '/getDataBySection',
+      data:
+          {
+            'sectionId': sectionId,
+            'unitId': unitId,
+          },
+      success: function (data) {
+        $('.secondBlock').html(data);
+        $("#lightgallery").lightGallery();
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    });
+  }
+  window.onload = function(){
+    getFile( {{ $active_section }}, {{ $unit->id }})
+  }
+</script>
+
 
 
 

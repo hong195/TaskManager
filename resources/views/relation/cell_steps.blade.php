@@ -39,21 +39,20 @@
                              data-cell-deadline="{{ $cell->deadline }}"
                         >
                             @foreach($cell->steps as $k => $step)
-                                <div class="single-block single-cell d-flex align-items-center"
+                                <div style="width: 100%;" class="single-block single-cell d-flex align-items-center"
                                      data-id="{{ $step->id }}" data-name="{{ $step->name }}"
                                      data-deadline="{{ $step->deadline }}" data-status="{{ $step->status }}"
                                      data-status-readable="{{ __('status.'.$step->status) }}"
                                      data-person="{{ $step->person }}" data-start="{{ $step->start_date }}"
                                 >
                                     <a href="#" class="d-flex">
-                                        <div>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <span>{{ $step->name }}</span>
+                                        <div class="d-flex flex-wrap">
+                                            <span><i class="fa fa-star" aria-hidden="true"></i> {{ $step->name }}</span>
+                                            <span class="w-100">Испольнитель: {{ $step->name }}</span>
+                                            <span class="w-100">Статус: {{ __('status.'.$step->status) }}</span>
+                                            <span class="w-100">Дедлайн: {{ $step->deadline }}</span>
                                         </div>
                                         <div class="d-flex align-items-center">
-                                            <a class="step" href="#" data-id="{{ $step->id }}">
-                                                <i class="fa fa-search mx-1 " aria-hidden="true"></i>
-                                            </a>
                                             @can('manage', $unit)
                                                 <a href="{{ route('step.update', $step->id) }}"
                                                    data-id="{{ $step->id }}" data-toggle="modal"
@@ -104,8 +103,6 @@
             </div>
         </div>
     </div>
-    @include('steps.show')
-
     @if (Auth::check() && Auth::user()->getAccessLevel())
         @include('steps.create')
         @include('steps.destroy')

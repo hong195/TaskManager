@@ -3,5 +3,7 @@
 return [
     'complete' => 'Выполнено',
     'missed' => 'Пропущено',
-    'incomplete' => 'Незавершенно'
+    'incomplete' => 'Запланировано',
+    'in_progress' => 'В работе',
+    'not_relevant' => 'Не актуально',
 ];
