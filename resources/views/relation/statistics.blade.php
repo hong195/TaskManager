@@ -89,8 +89,8 @@
                                 @foreach($companyStat as $month => $data)
                                     <td width="70px" class="text-right">{{ $data[$companySlug]['in_progress'] }}</td>
                                     <td width="70px" class="text-right">{{ $data[$companySlug]['fact'] }}</td>
-                                    <td width="70px" class="text-right">{{ $data[$companySlug]['in_progress'] }}</td>
                                     <td width="70px" class="text-right">{{ $data[$companySlug]['complete'] }}</td>
+                                    <td width="70px" class="text-right">{{ $data[$companySlug]['complete_fact'] }}</td>
                                 @endforeach
                             </tr>
                         @endforeach
@@ -136,13 +136,10 @@
                             <tr>
                                 <td class="pl-2">{{ $department }}</td>
                                 @foreach($companyDepStat as $month => $data)
-{{--                                    @php--}}
-{{--                                        dump($data)--}}
-{{--                                            @endphp--}}
                                     <td width="70px" class="text-right">{{ $data[$department]['in_progress'] }}</td>
                                     <td width="70px" class="text-right">{{ $data[$department]['fact'] }}</td>
-                                    <td width="70px" class="text-right">{{ $data[$department]['in_progress'] }}</td>
                                     <td width="70px" class="text-right">{{ $data[$department]['complete'] }}</td>
+                                    <td width="70px" class="text-right">{{ $data[$department]['complete_fact'] }}</td>
                                 @endforeach
                             </tr>
                         @endforeach

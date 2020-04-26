@@ -8,6 +8,7 @@ use App\Department;
 use App\Enums\CellStatus;
 use App\File;
 use App\Section;
+use App\Step;
 use App\Unit;
 use App\User;
 use Carbon\Carbon;
@@ -285,256 +286,304 @@ class RelationController extends Controller
                 'asklepiy' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 25,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'may' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'june' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'july' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'august' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'september' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'october' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'december' => [
                 'asklepiy' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'oxymed' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'nika_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'zamona_rano' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'mari_pharm' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'asklepiy_group' => [
                     'in_progress' => 0,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
         ];
@@ -548,133 +597,158 @@ class RelationController extends Controller
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 1,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'may' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'june' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'july' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
@@ -684,242 +758,288 @@ class RelationController extends Controller
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'august' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'september' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'october' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'november' => [
                 'HR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
             'december' => [
                 'HR' => [
                     'in_progress' => 10,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Financial' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Marketing' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'CMD' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Logistics' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'Law' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'IT' => [
                     'in_progress' => 5,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
                 'PR' => [
                     'in_progress' => 15,
                     'fact' => 0,
-                    'complete' => 0
+                    'complete' => 0,
+                    'complete_fact' => 0
                 ],
             ],
         ];
@@ -955,86 +1075,6 @@ class RelationController extends Controller
 
     public function test()
     {
-
-//        $allHrCells = Cell::query()->where('block_id', '<', 11)->count();
-//        dd($allHrCells);
-//        $allFinancialCells = Cell::where([['block_id', '>=', 11], ['block_id', '<=',  18]])->count();
-//        dd($allFinancialCells);
-//        $allMarketing = Cell::where([['block_id', '>=', 19], ['block_id', '<=',  28]])->count();
-//        dd($allMarketing);
-//            $allIt = Cell::where([['block_id', '>=', 29], ['block_id', '<=',  37]])->count();
-//            dd($allIt);
-//            $allLaw = Cell::where([['block_id', '>=', 38], ['block_id', '<=',  47]])->count();
-//            dd($allLaw);
-//        $PR = Cell::where([['block_id', '>=', 48], ['block_id', '<=',  54]])->count();
-//        dd($PR);
-//        $transportCells = Cell::where([['block_id', '>=', 55], ['block_id', '<=',  59]])->count();
-//        dd($transportCells);
-//        $CMDcells = Cell::where([['block_id', '>=', 60], ['block_id', '<=',  63]])->count();
-//        dd($CMDcells);
-//        $finalized = Cell::where('status','complete')->get();
-//        dd($finalized);
-
-
+        dd(1111);
     }
-
-
-//    public function getUnitCellsCount($id)
-//    {
-//
-//        $emptyArr = [];
-//        $unitCells = Unit::find($id)->cells->groupBy(function ($val) {
-//            return Carbon::parse($val->created_at)->format('M:Y');
-//        });
-//        foreach ($unitCells as $key => $oneMonth) {
-//            $emptyArr[$key] = count($oneMonth);
-//        }
-//        return $emptyArr;
-//    }
-//
-//    protected function getHRIds()
-//    {
-//        return [1, 9, 17, 25, 33, 41, 49];
-//    }
-//
-//    protected function getFinancialIds()
-//    {
-//        return [2, 10, 18, 26, 34, 42, 50];
-//    }
-//
-//    protected function getMarketingIds()
-//    {
-//        return [3, 11, 19, 27, 35, 43, 51];
-//    }
-//
-//    protected function getItIds()
-//    {
-//        return [4, 12, 20, 28, 36, 44];
-//    }
-//
-//    protected function getLawIds()
-//    {
-//        return [5, 13, 21, 29, 37, 45, 53];
-//    }
-//
-//    protected function getPRIds()
-//    {
-//        return [6, 14, 22, 30, 38, 46, 54];
-//    }
-//
-//    protected function getLogistics()
-//    {
-//        return [7, 15, 23, 31, 39, 47, 55];
-//    }
-//
-//    protected function getCatManIds()
-//    {
-//        return [8, 16, 24, 32, 40, 48, 56];
-//    }
-//
-//    public function getAsklepiyCells()
-//    {
-//        $unit = Unit::find(3)->departments;
-//        return $unit;
-//    }
 }
