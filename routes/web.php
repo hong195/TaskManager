@@ -35,6 +35,8 @@ Route::post('/getDataBySection', 'RelationController@getDataBySection');
 Route::post('/ajaxphotobooth', 'RelationController@ajaxphotobooth');
 Route::get('/getCellsBySystemGC', 'RelationController@getCellsBySystemGC');
 Route::get('/analytics/{unit}', 'RelationController@statistics')->name('statistics');
+Route::get('/gantt/{unit}/{department?}', 'CellGanttController@ganttView')->name('gantt');
+Route::post('/gantt', 'CellGanttController@getGanttAnalitic');
 
 
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Block;
 use App\Department;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlockController extends Controller
@@ -42,12 +44,13 @@ class BlockController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Block $block
+     * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(Block $block)
     {
-        //
+
     }
 
     /**

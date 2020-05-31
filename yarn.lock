@@ -2137,6 +2137,11 @@ date-format-parse@^0.2.5:
   resolved "https://registry.yarnpkg.com/date-format-parse/-/date-format-parse-0.2.5.tgz#6acd7672058e59cb34c85e0d82c04bceeac9d652"
   integrity sha512-PzvB3p9bTxrGQbz3ZlO/kxgXzKZhMo4l0OQfPqVYjuwixHRS9yHH6cUJI9JG2Hh6iUQgh17T7w95lzQ131dS/g==
 
+dayjs@^1.8.16:
+  version "1.8.28"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.28.tgz#37aa6201df483d089645cb6c8f6cef6f0c4dbc07"
+  integrity sha512-ccnYgKC0/hPSGXxj7Ju6AV/BP4HUkXC2u15mikXT5mX9YorEaoi1bEKOmAqdkJHN4EEkmAf97SpH66Try5Mbeg==
+
 de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
@@ -2903,6 +2908,15 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+
+gantt-elastic@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/gantt-elastic/-/gantt-elastic-1.0.11.tgz#1547a4cf488b71faed7860bac77bb9ac76c49c6e"
+  integrity sha512-Im0hemDdfshSl/ZaAYBSl3WEk+W9U7vQbEasWbUk9uk40q4onXxWim9/N3m/izNwo4A2boikkmSo9oTjz5ff0w==
+  dependencies:
+    dayjs "^1.8.16"
+    resize-observer-polyfill "^1.5.1"
+    vue "^2.6.10"
 
 gensync@^1.0.0-beta.1:
   version "1.0.0-beta.1"
@@ -5533,6 +5547,11 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -6546,7 +6565,7 @@ vue2-datepicker@^3.4.1:
     date-fns "^2.0.1"
     date-format-parse "^0.2.5"
 
-vue@^2.5.17:
+vue@^2.5.17, vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==

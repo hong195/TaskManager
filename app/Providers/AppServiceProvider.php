@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Contracts\GanttAnalitycsContract;
+use App\Http\Controllers\CellStatistics;
 use App\Unit;
 use App\User;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(GanttAnalitycsContract::class, function () {
+            return new CellStatistics();
+        });
     }
 
     /**

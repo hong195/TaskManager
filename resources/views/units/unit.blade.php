@@ -11,7 +11,7 @@
                 @foreach($sections as $k => $section)
                     <div class="staticList
                     <?php echo $k === 0 ? 'active' : '';
-                          echo in_array($section->type, ['system', 'statistics']) ? 'system' : ''
+                          echo in_array($section->type, ['system', 'statistics', 'gantt-analitycs']) ? 'system' : ''
                     ?>
                     ">
                         @if ($section->type === 'system')
@@ -27,6 +27,11 @@
                                 style="text-decoration:none"
                                 class="system"
                             >
+                                <i class="{{$section->icon_code}}"></i>
+                                {{ $section->name }}
+                            </a>
+                        @elseif('gantt-analitycs' === $section->type)
+                            <a class="system" href="{{ route('gantt', $unit->id) }}">
                                 <i class="{{$section->icon_code}}"></i>
                                 {{ $section->name }}
                             </a>

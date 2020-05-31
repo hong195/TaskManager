@@ -7,6 +7,7 @@ use App\Cell;
 use App\Department;
 use App\Enums\CellStatus;
 use App\File;
+use App\Http\Contracts\GanttAnalitycsContract;
 use App\Section;
 use App\Step;
 use App\Unit;
@@ -1073,8 +1074,4 @@ class RelationController extends Controller
         );
     }
 
-    public function test()
-    {
-        dd(1111);
-    }
 }

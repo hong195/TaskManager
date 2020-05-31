@@ -19,6 +19,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 import DatePicker from 'vue2-datepicker';
+import GanttChart from './components/Gantt/GanttChart';
+import SelectList from './components/SelectList';
 import 'vue2-datepicker/index.css';
 import 'vue2-datepicker/locale/ru';
 import 'lightgallery/dist/js/lightgallery-all.min.js'
@@ -33,7 +35,11 @@ import 'lightgallery/dist/css/lightgallery.css'
 const compareDate = new Date();
 
 const app = new Vue({
-    components: { DatePicker },
+    components: {
+        DatePicker,
+        GanttChart,
+        SelectList
+    },
     data:{
         startDate: null,
         endDate: null,
@@ -74,6 +80,9 @@ const app = new Vue({
                 compareDate = new Date()
             }
             return date > compareDate
+        },
+        changeDepartment(option) {
+            window.location.replace(`${window.location.origin}/gantt/${option.bu_id}/${option.id}`)
         }
     },
 }).$mount('#app');

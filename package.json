@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "gantt-elastic": "^1.0.11",
         "lg-autoplay": "^1.0.4",
         "lg-fullscreen": "^1.1.0",
         "lg-hash": "^1.0.4",

@@ -7,6 +7,7 @@ use App\Enums\CellStatus;
 use App\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\CellStatisticsContract;
 
 class CellController extends Controller
 {
@@ -43,15 +44,10 @@ class CellController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+
     }
 
     /**
