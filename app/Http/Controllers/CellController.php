@@ -5,77 +5,34 @@ namespace App\Http\Controllers;
 use App\Cell;
 use App\Enums\CellStatus;
 use App\File;
+use App\Traits\DateTrait;
+use Carbon\Carbon;
+use Carbon\Traits\Date;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\CellStatisticsContract;
 
 class CellController extends Controller
 {
-
-
     /**
-     * Display a listing of the resource.
+     * Update the specified cell in storage.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show($id)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param Cell $cell
-     * @return void
+     * @return RedirectResponse
      */
     public function update(Request $request, Cell $cell)
     {
-        $request->validate([
-            'name' => 'required',
-            'deadline' => 'required',
-            'status' => 'required|in:' . implode(',', CellStatus::cellStatuses()),
-        ]);
+        $validatedCellAttributes = $this->validateCellAttributes($request);
 
+        if ($request->status === CellStatus::IN_PROGRESS) {
+            $validatedCellAttributes['fact_start_date'] = Carbon::parse(now())->format('Y-m-d');
+        }else if ($request->status === CellStatus::COMPLETE) {
+            $validatedCellAttributes['fact_deadline'] = Carbon::parse(now())->format('Y-m-d');
+        }
+
+        $cell->update($validatedCellAttributes);
+
+        // Todo move to File Model
         if($request->hasfile('files')) {
             foreach($request->file('files') as $uploadedFile)
             {
@@ -93,19 +50,17 @@ class CellController extends Controller
             }
         }
 
-        $cell->update($request->all('name', 'deadline', 'status'));
 
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function validateCellAttributes(Request $request)
     {
-        //
+        return  $request->validate([
+            'name' => 'required',
+            'visualisation_date' => 'nullable',
+            'plan_deadline' => 'nullable',
+            'status' => 'required|in:' . implode(',', CellStatus::cellStatuses()),
+        ]);
     }
 }

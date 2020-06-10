@@ -9,7 +9,7 @@
             </div>
         @endif
         <div class="exitDiv">
-            <a class="backBtn" href="{{ route('departments', $unit->id) }}">
+            <a class="backBtn" href="{{ route('units.show', $unit->id) }}">
                 <h5><i class="fas fa-undo-alt"></i>Назад</h5>
             </a>
         </div>

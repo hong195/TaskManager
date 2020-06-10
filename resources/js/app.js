@@ -34,6 +34,9 @@ import 'lightgallery/dist/css/lightgallery.css'
  */
 const compareDate = new Date();
 
+//Todo Refactor app.js
+//Todo start , end date limitations
+
 const app = new Vue({
     components: {
         DatePicker,
@@ -41,6 +44,7 @@ const app = new Vue({
         SelectList
     },
     data:{
+        planApprovedAt: null,
         startDate: null,
         endDate: null,
         lang: {
@@ -146,6 +150,7 @@ $(document).ready(function(){
     $('.step__delete').click(function(event){
         event.preventDefault()
     })
+
     $('#destroyStep').on('show.bs.modal', function (event) {
         const button = $(event.relatedTarget)
         const url = button.attr('href')
@@ -180,7 +185,12 @@ $(document).ready(function(){
         modal.find('.name').val(dataSet.cellName)
         modal.find('#status').val(dataSet.status)
         modal.find('form').attr('action', dataSet.action)
-        app.endDate = new Date(dataSet.deadline)
+
+        const endDate = dataSet.factApprovedAt ? dataSet.factApprovedAt : new Date(),
+              planApprovedAt = dataSet.planApprovedAt ? dataSet.planApprovedAt : new Date()
+
+        app.endDate = new Date(endDate)
+        app.planApprovedAt = new Date(planApprovedAt)
 
     })
 

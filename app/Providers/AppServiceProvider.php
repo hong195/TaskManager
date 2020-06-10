@@ -2,12 +2,13 @@
 
 namespace App\Providers;
 
-use App\Http\Contracts\GanttAnalitycsContract;
-use App\Http\Controllers\CellStatistics;
+use App\Http\Contracts\CellAnalytic;
+use App\Http\Controllers\MonthCellAnalyticsController;
 use App\Unit;
 use App\User;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,8 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(GanttAnalitycsContract::class, function () {
-            return new CellStatistics();
+        $this->app->singleton(MonthCellAnalyticsController::class, function () {
+            $year = Carbon::parse(now())->year;
+            return new MonthCellAnalyticsController($year);
         });
     }
 

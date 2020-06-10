@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index(){
-        //dd(User::first()->permission->level_access);
-        return view('layouts.users');
-    }
 
     public function changePassword() {
         if (!Auth::check()) {
@@ -21,20 +17,6 @@ class UserController extends Controller
         return view('auth.change-password');
     }
 
-    public function create(){
-        return 1;
-    }
-    public function store(){
-        return 2;
-    }
-    public function show(){
-        return 3;
-    }
-
-
-    public function edit(){
-
-    }
     /**
      * @param Request $request
      * @param User $user
@@ -49,9 +31,5 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/');
-    }
-    public function destroy(){
-        return 6;
-
     }
 }

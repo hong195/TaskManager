@@ -30,6 +30,14 @@
                                 <i class="{{$section->icon_code}}"></i>
                                 {{ $section->name }}
                             </a>
+                        @elseif($section->type === 'gantt-analitycs')
+                            <a  href="{{ route('gantt', $unit->id) }}"
+                                style="text-decoration:none"
+                                class="system"
+                            >
+                                <i class="{{$section->icon_code}}"></i>
+                                {{ $section->name }}
+                            </a>
                         @elseif('gantt-analitycs' === $section->type)
                             <a class="system" href="{{ route('gantt', $unit->id) }}">
                                 <i class="{{$section->icon_code}}"></i>

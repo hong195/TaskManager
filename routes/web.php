@@ -19,25 +19,23 @@ Auth::routes(
 
 Route::get('/', 'UnitController@index')->name('home');
 Route::get('/test', 'RelationController@test')->name('test');
-
 Route::get('/change-password', 'UserController@changePassword')->name('change-password');
+
 Route::resource('user', 'UserController');
 Route::resource('file', 'FileController');
 Route::resource('units', 'UnitController');
 Route::resource('cell', 'CellController');
 Route::resource('term', 'TermController');
 Route::resource('step', 'StepController');
-Route::get('/unit/{unit}/departments', 'RelationController@unitRelation')->name('departments');
-Route::get('/block/{block}/cells', 'RelationController@blockRelation')->name('blocks');
-Route::get('/cell/{cell}/steps', 'RelationController@CellRelation')->name('cells');
-Route::post('/ajaxblocks', 'RelationController@ajaxblocks');
-Route::post('/getDataBySection', 'RelationController@getDataBySection');
-Route::post('/ajaxphotobooth', 'RelationController@ajaxphotobooth');
+
+Route::post('/ajaxblocks', 'UnitRelationController@ajaxblocks');
+Route::post('/getDataBySection', 'UnitRelationController@getDataBySection');
+Route::post('/ajaxphotobooth', 'UnitRelationController@ajaxphotobooth');
+Route::post('/gantt', 'CellGanttController@getGanttAnalytic');
+
 Route::get('/getCellsBySystemGC', 'RelationController@getCellsBySystemGC');
-Route::get('/analytics/{unit}', 'RelationController@statistics')->name('statistics');
+Route::get('/unit/{unit}/departments', 'UnitRelationController@departments')->name('departments');
+Route::get('/block/{block}/cells', 'BlockRelationController@cells')->name('blocks');
+Route::get('/cell/{cell}/steps', 'CellRelationController@steps')->name('cells');
+Route::get('/analytics/{unit}', 'MonthCellAnalyticsController@analytics')->name('statistics');
 Route::get('/gantt/{unit}/{department?}', 'CellGanttController@ganttView')->name('gantt');
-Route::post('/gantt', 'CellGanttController@getGanttAnalitic');
-
-
-
-

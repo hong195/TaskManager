@@ -14,8 +14,10 @@ class AddVerifiedToCells extends Migration
     public function up()
     {
         Schema::table('cells', function (Blueprint $table) {
-            $table->boolean('verified')->after('name')->default(false);
-            $table->dateTime('verified_date')->after('verified')->default(date(now()))->nullable();
+            $table->dateTime('verified_date')
+                ->after('status')
+                ->default(date(now()))
+                ->nullable();
         });
     }
 
@@ -27,7 +29,7 @@ class AddVerifiedToCells extends Migration
     public function down()
     {
         Schema::table('cells', function (Blueprint $table) {
-            $table->dropColumn(['verified', 'verified_date']);
+            $table->dropColumn('verified_date');
         });
     }
 }

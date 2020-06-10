@@ -25,12 +25,23 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label class="col-form-label">Дата Визуализации</label>
+                        <div class="w-100">
+                            <date-picker class="w-100" v-model="planApprovedAt">
+                                <template slot="input">
+                                    <input type="text" class="form-control w-100" :value="formatDate(planApprovedAt)"
+                                           name="visualisation_date"/>
+                                </template>
+                            </date-picker>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-form-label">Дедлайн*</label>
                         <div class="w-100">
                             <date-picker class="w-100" v-model="endDate">
                                 <template slot="input">
                                     <input type="text" class="form-control w-100" :value="formatDate(endDate)"
-                                           name="deadline" required />
+                                           name="plan_deadline" required />
                                 </template>
                             </date-picker>
                         </div>

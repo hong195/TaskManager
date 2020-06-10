@@ -2,9 +2,13 @@
   <div>
     <div class="mt-5 mb-10">
       <gantt-elastic
+        v-if="tasks.length"
         :options="options"
         :tasks="tasks"
       />
+      <div v-else>
+          Нет Задач
+      </div>
     </div>
 
   </div>
@@ -59,34 +63,19 @@
       },
 
       formGanntData(ganttData) {
-        let id = 1;
         ganttData.forEach((el, index) => {
+          const duration = this.getTimestampDiff(el.start, el.end),
+                startDate = this.getTimestampFromDate(el.start)
           const item = {
-            id: id,
-            label: `${el.name} (${el.plan.label})`,
-            start: this.getTimestampFromDate(el.plan.start),
-            duration: this.getTimestampDiff(el.plan.start, el.plan.end),
-            percent: 100,
-            type: 'task',
-            style: this.planColor,
-          };
-
-          this.tasks.push(item);
-
-          if (el.fact) {
-            this.tasks.push({
-              id: ++id,
-              label: `${el.name} (${el.fact.label})`,
-              start: this.getTimestampFromDate(el.fact.start),
-              duration: this.getTimestampDiff(el.fact.end, el.fact.start),
+              id: index,
+              label: el.label,
+              start: startDate,
+              duration: duration,
               percent: 100,
-              style: this.factColor,
               type: 'task',
-            });
-          }
-
-          ++id;
-
+              style: this.planColor,
+            };
+          this.tasks.push(item);
         });
       },
     },

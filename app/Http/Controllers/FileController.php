@@ -8,33 +8,12 @@ use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     public function uploadImage(Request $request)
     {
         $this->validate($request, [
             'select_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048']);
-
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -64,28 +43,6 @@ class FileController extends Controller
         $section->file()->save($attachment);
 
         return redirect(route('units.show', $request->unit_id));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
