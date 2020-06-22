@@ -5,7 +5,7 @@
       <option v-for="option in options"
               :value="option.id"
               :key="option.id"
-              :selected="selected === option.id"
+              :selected="selectedOption === option.id"
       >
         {{ option.name }}
       </option>
@@ -20,7 +20,7 @@
       options: {
         type: Array
       },
-      selected: {
+      selectedOption: {
         type: Number
       }
     },

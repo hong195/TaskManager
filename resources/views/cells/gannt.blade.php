@@ -21,7 +21,7 @@
                     <div class="my-5">
                         <select-list :options="{{ json_encode($unit->departments) }}"
                                      @on-change="changeDepartment($event)"
-                                     :selected="{{ $department->id }}"
+                                     :selectedOption="{{ $department->id }}"
                         >
                         </select-list>
                     </div>

@@ -35,7 +35,8 @@ class CellGanttController extends Controller implements GanttAnalytics
                 $cellsData[] = $this->addTask(
                     $cell->name . ' - ' . __('cells.' . self::PLAN_KEY),
                     $cell->visualisation_date,
-                    $cell->plan_deadline
+                    $cell->plan_deadline,
+                    $cell->block->code_color
                 );
             }
             // status CellStatus::COMPLETE indicate that cell is fully completed, that`s why need to check complete status
@@ -43,7 +44,8 @@ class CellGanttController extends Controller implements GanttAnalytics
                 $cellsData[] = $this->addTask(
                     $cell->name . ' - ' . __('cells.' . self::FACT_KEY),
                     $cell->fact_start_date,
-                    $cell->fact_deadline
+                    $cell->fact_deadline,
+                    $cell->block->code_color
                 );
             }
         }
@@ -57,12 +59,13 @@ class CellGanttController extends Controller implements GanttAnalytics
      * @param $endDate
      * @return array
      */
-    private function addTask(string $label, $startDate, $endDate)
+    private function addTask(string $label, $startDate, $endDate, $color = 'rgb(0, 92, 76)')
     {
         return [
             'label' => $label,
             'start' => $this->formatDate($startDate),
-            'end' => $this->formatDate($endDate)
+            'end' => $this->formatDate($endDate),
+            'color' => $color
         ];
     }
 
