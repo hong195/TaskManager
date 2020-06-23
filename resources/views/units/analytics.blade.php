@@ -8,6 +8,18 @@
             <div class="col-md-12" style="overflow: auto; margin-right: 20px;">
                 <h2>Статистика по Направлениям</h2>
 
+                <div class="years my-5 row">
+                    <h4 class="ml-3 mr-2">Выберите год</h4>
+                    <select name="year" id="year">
+                        @foreach($years as $year)
+                            <option value="{{ route('statistics', ['unit' => $unit->id, 'year' => $year]) }}"
+                                    {{ $year === $currentYear ? 'selected' : ''}}
+                            >
+                                {{ $year }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <table class=" table-bordered" width="100%">
                     <tr>
                         <th class="pl-2" style="min-width: 200px;">Отдел</th>

@@ -81,7 +81,7 @@
                 startDate = this.getTimestampFromDate(el.start)
                 this.color.base.fill  = this.color.base.stroke = el.color
           const item = {
-              id: index,
+              id: ++index,
               label: el.label,
               start: startDate,
               duration: duration,

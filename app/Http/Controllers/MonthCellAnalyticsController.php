@@ -7,6 +7,7 @@ use App\Enums\CellStatus;
 use App\Http\Contracts\CellAnalytic;
 use App\Unit;
 use Carbon\CarbonPeriod;
+use Illuminate\Support\Carbon;
 
 //use App\Http\Contracts\CellAnalytics;
 
@@ -73,7 +74,13 @@ class MonthCellAnalyticsController extends Controller implements CellAnalytic
     {
         $unit = $unit->load('departments.blocks.cells');
 
+        $years = [
+            Carbon::parse(now())->year,
+            Carbon::parse('+ 1year')->year
+        ];
         return view('units.analytics', [
+            'currentYear' => $this->year,
+            'years' => $years,
             'unit' => $unit,
             'template' => $this->template,
             'unitsAnalytics' => $this->getByUnit($unit)

@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Contracts\CellAnalytic;
 use App\Http\Controllers\MonthCellAnalyticsController;
 use App\Unit;
 use App\User;
@@ -20,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(MonthCellAnalyticsController::class, function () {
-            $year = Carbon::parse(now())->year;
+            $year = request()->year ?? Carbon::parse(now())->year;
             return new MonthCellAnalyticsController($year);
         });
     }

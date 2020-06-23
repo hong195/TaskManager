@@ -207,4 +207,9 @@ $(document).ready(function(){
         }
 
     })
+
+    $('#year').change(function(event){
+        const redirectUrl = $(this).val()
+        window.location.href = redirectUrl
+    });
 })
