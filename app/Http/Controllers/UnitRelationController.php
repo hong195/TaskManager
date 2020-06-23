@@ -13,8 +13,13 @@ class UnitRelationController extends Controller
     {
         $unit->load('departments.blocks');
 
+        $departments = $unit->departments->sort(function ($a, $b) {
+            return $a->order - $b->order;
+        });
+
         return view('relation.unit_department', [
-            'unit' => $unit
+            'unit' => $unit,
+            'departments' => $departments
         ]);
     }
 
