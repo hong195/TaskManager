@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\DB;
+
 Auth::routes(
     [
         'register' => false, 'reset' => false
@@ -37,5 +39,18 @@ Route::get('/getCellsBySystemGC', 'RelationController@getCellsBySystemGC');
 Route::get('/unit/{unit}/departments', 'UnitRelationController@departments')->name('departments');
 Route::get('/block/{block}/cells', 'BlockRelationController@cells')->name('blocks');
 Route::get('/cell/{cell}/steps', 'CellRelationController@steps')->name('cells');
-Route::get('/analytics/{unit}', 'MonthCellAnalyticsController@analytics')->name('statistics');
+Route::get('/analytics/{unit}', 'AnalyticController@index')->name('statistics');
 Route::get('/gantt/{unit}/{department?}', 'CellGanttController@ganttView')->name('gantt');
+
+Route::get('/duplicates', function () {
+    $unit = \App\Unit::where('id', 1)->first();
+
+    $analytic = new \App\Http\Controllers\UnitTotalAnalyticController($unit);
+    $analytic2 = new \App\Http\Controllers\PrimaryUnitAnalyticController($unit);
+
+    $tt = $analytic2->getAllData();
+    $tt = $analytic2->getCompletedTasks();
+    dump($tt);
+
+
+});

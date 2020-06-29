@@ -48,4 +48,19 @@ class Unit extends Model
         );
     }
 
+    public function blocks()
+    {
+        return $this->hasManyDeep(
+            'App\Block',
+            ['App\Department'],
+            [
+                'bu_id',
+                'dep_id',
+            ],
+            [
+                'id',
+                'id',
+            ]
+        );
+    }
 }

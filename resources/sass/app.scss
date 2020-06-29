@@ -16,6 +16,10 @@ a {
   text-decoration: none !important;
 }
 
+.gantt-elastic__chart-row-text-content.gantt-elastic__chart-row-text-content--html {
+    display: none;
+}
+
 .staticList {
   border: 1px solid #c4c4c4;
   margin: 15px;

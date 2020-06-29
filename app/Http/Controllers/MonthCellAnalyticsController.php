@@ -17,7 +17,7 @@ class MonthCellAnalyticsController extends Controller implements CellAnalytic
      * define the year
      * @var int
      */
-    protected $year;
+    private $year;
 
     /**
      * the period of analytic
@@ -63,28 +63,6 @@ class MonthCellAnalyticsController extends Controller implements CellAnalytic
         $this->year = $year;
 
         $this->generateUnitTemplate();
-    }
-
-    /**
-     * View that`s holds all Unit analytics
-     * @param Unit $unit
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function analytics(Unit $unit)
-    {
-        $unit = $unit->load('departments.blocks.cells');
-
-        $years = [
-            Carbon::parse(now())->year,
-            Carbon::parse('+ 1year')->year
-        ];
-        return view('units.analytics', [
-            'currentYear' => $this->year,
-            'years' => $years,
-            'unit' => $unit,
-            'template' => $this->template,
-            'unitsAnalytics' => $this->getByUnit($unit)
-        ]);
     }
 
     /**
@@ -154,5 +132,21 @@ class MonthCellAnalyticsController extends Controller implements CellAnalytic
         }
 
         return $departmentAnalytic;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getTemplate(): array
+    {
+        return $this->template;
+    }
+
+    /**
+     * @return int
+     */
+    public function getYear(): int
+    {
+        return $this->year;
     }
 }

@@ -13,7 +13,7 @@
                     <select name="year" id="year">
                         @foreach($years as $year)
                             <option value="{{ route('statistics', ['unit' => $unit->id, 'year' => $year]) }}"
-                                    {{ $year === $currentYear ? 'selected' : ''}}
+                                {{ $year === $currentYear ? 'selected' : ''}}
                             >
                                 {{ $year }}
                             </option>
@@ -69,6 +69,32 @@
 
                 </table>
             </div>
+            @if($totalAnalytics)
+                <div class="col-md-12 my-5">
+                    <h4 class="mr-2">Большая математика</h4>
+
+                    <table class=" table-bordered" width="100%">
+                    <tr>
+                        <th class="pl-2">По всем Системам</th>
+                        <th>Всего</th>
+                        <th>Коливество утвержденных визуализаций</th>
+                        <th>Запланировано</th>
+                        <th>В работе</th>
+                        <th>Выполнено</th>
+                    </tr>
+
+                    @foreach($totalAnalytics as $companyName => $data)
+                        <tr>
+                            <td>{{ $companyName }}</td>
+                            @foreach($data as $key => $value)
+                                <td>{{ $value }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+
+                </table>
+            </div>
+            @endif
         </div>
     </div>
 @endsection

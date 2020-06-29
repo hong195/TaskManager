@@ -32,7 +32,7 @@
                 <h3 class="ml-2">Блоки</h3>
                 <div class="secondBlock wrapper" style="margin: 15px 0 0; padding: 0;">
                         @forelse($unit->departments as $k => $one)
-                            <div class="{{ $k ===0 ? 'd-flex' : 'd-none' }} blocks flex-wrap justify-content-between"
+                            <div class="{{ $k ===0 ? 'd-flex' : 'd-none' }} blocks flex-wrap"
                                  data-id="{{ $one->id }}"
                             >
                                 @foreach($one->blocks as $block)
